@@ -34,4 +34,3 @@ I am a passionate software engineer specializing in building scalable, high-perf
 ### 📫 Let's Connect
 
 - **Email:** aminvost@gmail.com
-- **LinkedIn:** [Amin Asadi Vosta](https://linkedin.com/in/YOUR-LINKEDIN-ID)
