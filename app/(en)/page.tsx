@@ -27,7 +27,7 @@ export default function HomePage() {
       <section className="hero shell">
         <div className="eyebrow"><span className="dot" /> AminVost · Full-stack software engineer</div>
         <h1>Full-stack software engineer for <span>web, mobile & practical AI.</span></h1>
-        <div className="hero-copy">
+        {/* <div className="hero-copy">
           <p>I’m {profile.name}, the developer behind AminVost. {profile.headline} I care about useful product decisions, clean interfaces and software that holds up in production.</p>
           <div className="hero-side">
             <InteractivePortrait locale="en" />
@@ -36,7 +36,7 @@ export default function HomePage() {
               <Link className="button" href="/resume">View resume</Link>
             </div>
           </div>
-        </div>
+        </div> */}
         <div className="stats">
           <div className="stat"><strong>6+ yrs</strong><span>professional development</span></div>
           <div className="stat"><strong>{projects.length}</strong><span>documented projects</span></div>

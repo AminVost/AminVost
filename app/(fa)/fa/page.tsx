@@ -26,7 +26,7 @@ export default function PersianHomePage() {
       <section className="hero shell">
         <div className="eyebrow"><span className="dot" /> AminVost · مهندس نرم‌افزار فول‌استک</div>
         <h1>مهندس نرم‌افزار فول‌استک برای <span>وب، موبایل و هوش مصنوعی کاربردی.</span></h1>
-        <div className="hero-copy">
+        {/* <div className="hero-copy">
           <p>من {profileFa.name} هستم و با برند AminVost فعالیت می‌کنم. {profileFa.headline} برای من تصمیم درست محصول، رابط تمیز و نرم‌افزاری که در Production قابل اتکا باشد مهم است.</p>
           <div className="hero-side">
             <InteractivePortrait locale="fa" />
@@ -35,7 +35,7 @@ export default function PersianHomePage() {
               <Link className="button" href="/fa/resume">مشاهده رزومه</Link>
             </div>
           </div>
-        </div>
+        </div> */}
         <div className="stats">
           <div className="stat"><strong>+۶ سال</strong><span>تجربه حرفه‌ای توسعه</span></div>
           <div className="stat"><strong>{projectsFa.length}</strong><span>پروژه مستندشده</span></div>
