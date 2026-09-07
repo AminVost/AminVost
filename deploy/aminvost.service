@@ -1,0 +1,15 @@
+[Unit]
+Description=Amin Vosta Next.js Portfolio
+After=network.target
+
+[Service]
+Type=simple
+User=www-data
+WorkingDirectory=/var/www/aminvost
+Environment=NODE_ENV=production
+ExecStart=/usr/bin/node /var/www/aminvost/.next/standalone/server.js
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
