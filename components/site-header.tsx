@@ -38,7 +38,7 @@ export function SiteHeader({ locale = "en" }: { locale?: Locale }) {
           </Link>
 
           <a
-            className="icon-button"
+            className="icon-button header-github"
             href="https://github.com/AminVost"
             target="_blank"
             rel="me noreferrer"

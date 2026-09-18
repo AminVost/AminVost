@@ -1,12 +1,23 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
 import "../../globals.css";
 import { SiteHeader } from "@/components/site-header";
 import { Footer } from "@/components/footer";
+import { MobileTabBar } from "@/components/mobile-tab-bar";
 import { GoogleAnalytics } from "@/components/google-analytics";
 import { profileFa } from "@/data/profile-fa";
 import { siteName } from "@/lib/seo";
 import { anta, manrope } from "../../fonts";
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#f7f8fa" },
+    { media: "(prefers-color-scheme: dark)", color: "#0c0e12" },
+  ],
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL(profileFa.domain),
@@ -16,6 +27,7 @@ export const metadata: Metadata = {
   },
   description: profileFa.headline,
   applicationName: siteName,
+  appleWebApp: { capable: true, statusBarStyle: "black-translucent", title: siteName },
   authors: [{ name: "Amin Asadi Vosta", url: profileFa.domain }],
   creator: "Amin Asadi Vosta",
   publisher: siteName,
@@ -49,6 +61,7 @@ export default function PersianLayout({ children }: Readonly<{ children: ReactNo
         <SiteHeader locale="fa" />
         <main className="site-main">{children}</main>
         <Footer locale="fa" />
+        <MobileTabBar locale="fa" />
         <GoogleAnalytics />
       </body>
     </html>

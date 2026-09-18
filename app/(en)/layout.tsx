@@ -1,14 +1,25 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
 import "../globals.css";
 import { SiteHeader } from "@/components/site-header";
 import { Footer } from "@/components/footer";
+import { MobileTabBar } from "@/components/mobile-tab-bar";
 import { GoogleAnalytics } from "@/components/google-analytics";
 import { profile } from "@/data/profile";
 import { siteName } from "@/lib/seo";
 import { anta, manrope } from "../fonts";
 
 const googleSiteVerification = process.env.GOOGLE_SITE_VERIFICATION;
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#f7f8fa" },
+    { media: "(prefers-color-scheme: dark)", color: "#0c0e12" },
+  ],
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL(profile.domain),
@@ -18,6 +29,7 @@ export const metadata: Metadata = {
   },
   description: profile.headline,
   applicationName: siteName,
+  appleWebApp: { capable: true, statusBarStyle: "black-translucent", title: siteName },
   authors: [{ name: profile.name, url: profile.domain }],
   creator: profile.name,
   publisher: siteName,
@@ -52,6 +64,7 @@ export default function EnglishLayout({ children }: Readonly<{ children: ReactNo
         <SiteHeader locale="en" />
         <main className="site-main">{children}</main>
         <Footer locale="en" />
+        <MobileTabBar locale="en" />
         <GoogleAnalytics />
       </body>
     </html>
