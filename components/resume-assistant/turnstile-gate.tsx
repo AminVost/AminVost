@@ -35,6 +35,7 @@ export function TurnstileGate({
   onVerified: () => void;
 }) {
   const isFa = locale === "fa";
+  const turnstileEnabled = process.env.NEXT_PUBLIC_AI_TURNSTILE_ENABLED === "true";
   const siteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
   const containerRef = useRef<HTMLDivElement>(null);
   const widgetIdRef = useRef<string | null>(null);
@@ -76,7 +77,8 @@ export function TurnstileGate({
 
   useEffect(() => {
     let active = true;
-    const bypassTurnstile = process.env.NODE_ENV !== "production" && !siteKey;
+    const bypassTurnstile =
+      !turnstileEnabled || (process.env.NODE_ENV !== "production" && !siteKey);
 
     void fetch("/api/assistant/session", {
       method: "GET",
@@ -103,9 +105,10 @@ export function TurnstileGate({
     return () => {
       active = false;
     };
-  }, [createSession, onVerified, siteKey]);
+  }, [createSession, onVerified, siteKey, turnstileEnabled]);
 
   useEffect(() => {
+    if (!turnstileEnabled) return;
     if (!checkedExisting || !siteKey || !scriptReady || !containerRef.current || !window.turnstile) return;
     if (widgetIdRef.current) return;
 
@@ -136,7 +139,7 @@ export function TurnstileGate({
       }
       widgetIdRef.current = null;
     };
-  }, [checkedExisting, createSession, isFa, scriptReady, siteKey]);
+  }, [checkedExisting, createSession, isFa, scriptReady, siteKey, turnstileEnabled]);
 
   if (!checkedExisting) {
     return (
@@ -151,7 +154,7 @@ export function TurnstileGate({
     );
   }
 
-  if (!siteKey && process.env.NODE_ENV === "production") {
+  if (turnstileEnabled && !siteKey && process.env.NODE_ENV === "production") {
     return (
       <div className="resume-assistant-gate">
         <GateIcon />
@@ -161,6 +164,23 @@ export function TurnstileGate({
             ? "تنظیمات امنیتی Turnstile در سرور کامل نشده است. راه‌های تماس عادی سایت همچنان در دسترس هستند."
             : "Turnstile security is not configured on the server yet. The normal contact options are still available."}
         </p>
+      </div>
+    );
+  }
+
+  if (!turnstileEnabled) {
+    return (
+      <div className="resume-assistant-gate" aria-live="polite">
+        <GateIcon />
+        <h3>{isFa ? "در حال آماده‌سازی دستیار…" : "Preparing AI assistant…"}</h3>
+        {status === "error" && error ? (
+          <p className="resume-assistant-inline-error">{error}</p>
+        ) : (
+          <div className="resume-assistant-gate-status">
+            <span className="resume-assistant-spinner" />
+            {isFa ? "یک لحظه…" : "One moment…"}
+          </div>
+        )}
       </div>
     );
   }

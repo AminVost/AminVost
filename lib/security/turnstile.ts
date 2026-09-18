@@ -12,6 +12,8 @@ export async function verifyTurnstile(
   request: NextRequest,
   token: string,
 ): Promise<boolean> {
+  if (process.env.NEXT_PUBLIC_AI_TURNSTILE_ENABLED !== "true") return true;
+
   if (process.env.NODE_ENV !== "production" && !process.env.TURNSTILE_SECRET_KEY) {
     return true;
   }
