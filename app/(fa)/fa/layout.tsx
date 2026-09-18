@@ -5,6 +5,7 @@ import { SiteHeader } from "@/components/site-header";
 import { Footer } from "@/components/footer";
 import { MobileTabBar } from "@/components/mobile-tab-bar";
 import { GoogleAnalytics } from "@/components/google-analytics";
+import { ResumeAssistantShell } from "@/components/resume-assistant/resume-assistant-shell";
 import { profileFa } from "@/data/profile-fa";
 import { siteName } from "@/lib/seo";
 import { anta, manrope } from "../../fonts";
@@ -62,6 +63,7 @@ export default function PersianLayout({ children }: Readonly<{ children: ReactNo
         <main className="site-main">{children}</main>
         <Footer locale="fa" />
         <MobileTabBar locale="fa" />
+        <ResumeAssistantShell locale="fa" />
         <GoogleAnalytics />
       </body>
     </html>
