@@ -24,22 +24,24 @@ export default function HomePage() {
       <JsonLd data={websiteJsonLd()} />
       <JsonLd data={profilePageJsonLd("en", absoluteUrl("/"))} />
 
-      <section className="hero shell">
-        <div className="eyebrow"><span className="dot" /> AminVost · Full-stack software engineer</div>
-        <h1>Amin Asadi Vosta — <span>full-stack software engineer for web, mobile & practical AI.</span></h1>
-        <div className="hero-copy">
-          <div className="hero-intro">
-            <p>I’m Amin Asadi Vosta, also known as AminVost — a full-stack developer and software engineer based in Tehran, Iran. I build production web applications, React Native mobile apps, API-driven systems, PWAs and practical AI features for real products and teams.</p>
-            <div className="hero-actions hero-actions-start">
-              <Link className="button primary" href="/projects">Explore projects <span aria-hidden="true">↗</span></Link>
-              <Link className="button" href="/resume">View resume</Link>
+      <section className="hero shell home-hero">
+        <div className="home-hero-grid">
+          <div className="home-hero-content">
+            <div className="eyebrow"><span className="dot" /> AminVost · Full-stack software engineer</div>
+            <h1>Amin Asadi Vosta — <span>full-stack software engineer for web, mobile & practical AI.</span></h1>
+            <div className="hero-intro">
+              <p>I’m Amin Asadi Vosta, also known as AminVost — a full-stack developer and software engineer based in Tehran, Iran. I build production web applications, React Native mobile apps, API-driven systems, PWAs and practical AI features for real products and teams.</p>
+              <div className="hero-actions hero-actions-start">
+                <Link className="button primary" href="/projects">Explore projects <span aria-hidden="true">↗</span></Link>
+                <Link className="button" href="/resume">View resume</Link>
+              </div>
             </div>
           </div>
-          <div className="hero-side">
+          <div className="home-hero-visual">
             <ProfilePhoto priority />
           </div>
         </div>
-        <div className="stats">
+        <div className="stats home-hero-stats">
           <div className="stat"><strong>6+ yrs</strong><span>professional development</span></div>
           <div className="stat"><strong>{projects.length}</strong><span>documented projects</span></div>
           <div className="stat"><strong>iOS / Android</strong><span>React Native + PWA</span></div>

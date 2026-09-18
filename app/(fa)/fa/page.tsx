@@ -24,22 +24,24 @@ export default function PersianHomePage() {
       <JsonLd data={websiteJsonLd()} />
       <JsonLd data={profilePageJsonLd("fa", absoluteUrl("/fa"))} />
 
-      <section className="hero shell">
-        <div className="eyebrow"><span className="dot" /> AminVost · مهندس نرم‌افزار فول‌استک</div>
-        <h1>امین اسدی وسطی — <span>برنامه‌نویس و مهندس نرم‌افزار فول‌استک برای وب، موبایل و هوش مصنوعی کاربردی.</span></h1>
-        <div className="hero-copy">
-          <div className="hero-intro">
-            <p>من امین اسدی وسطی (AminVost) هستم؛ برنامه‌نویس و مهندس نرم‌افزار فول‌استک در تهران. تمرکز اصلی من روی توسعه وب‌اپلیکیشن‌های واقعی، اپلیکیشن‌های React Native، سیستم‌های API محور، PWA و پیاده‌سازی قابلیت‌های کاربردی هوش مصنوعی در محصولات واقعی است.</p>
-            <div className="hero-actions hero-actions-start">
-              <Link className="button primary" href="/fa/projects">مشاهده پروژه‌ها <span aria-hidden="true">↗</span></Link>
-              <Link className="button" href="/fa/resume">مشاهده رزومه</Link>
+      <section className="hero shell home-hero">
+        <div className="home-hero-grid">
+          <div className="home-hero-content">
+            <div className="eyebrow"><span className="dot" /> AminVost · مهندس نرم‌افزار فول‌استک</div>
+            <h1>امین اسدی وسطی — <span>برنامه‌نویس و مهندس نرم‌افزار فول‌استک برای وب، موبایل و هوش مصنوعی کاربردی.</span></h1>
+            <div className="hero-intro">
+              <p>من امین اسدی وسطی (AminVost) هستم؛ برنامه‌نویس و مهندس نرم‌افزار فول‌استک در تهران. تمرکز اصلی من روی توسعه وب‌اپلیکیشن‌های واقعی، اپلیکیشن‌های React Native، سیستم‌های API محور، PWA و پیاده‌سازی قابلیت‌های کاربردی هوش مصنوعی در محصولات واقعی است.</p>
+              <div className="hero-actions hero-actions-start">
+                <Link className="button primary" href="/fa/projects">مشاهده پروژه‌ها <span aria-hidden="true">↗</span></Link>
+                <Link className="button" href="/fa/resume">مشاهده رزومه</Link>
+              </div>
             </div>
           </div>
-          <div className="hero-side">
+          <div className="home-hero-visual">
             <ProfilePhoto locale="fa" priority />
           </div>
         </div>
-        <div className="stats">
+        <div className="stats home-hero-stats">
           <div className="stat"><strong>+۶ سال</strong><span>تجربه حرفه‌ای توسعه</span></div>
           <div className="stat"><strong>{projectsFa.length}</strong><span>پروژه مستندشده</span></div>
           <div className="stat"><strong>iOS / Android</strong><span>React Native + PWA</span></div>
