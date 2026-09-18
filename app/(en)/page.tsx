@@ -4,13 +4,13 @@ import { profile } from "@/data/profile";
 import { featuredProjects, projects } from "@/data/projects";
 import { ProjectCard } from "@/components/project-card";
 import { JsonLd } from "@/components/json-ld";
-import { InteractivePortrait } from "@/components/interactive-portrait";
+import { ProfilePhoto } from "@/components/profile-photo";
 import { absoluteUrl, pageMetadata, profilePageJsonLd, websiteJsonLd } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
   locale: "en",
   description:
-    "AminVost is the portfolio of Amin Asadi Vosta, a full-stack software engineer in Tehran working across Next.js, React, PHP, mobile/PWA, APIs, production systems and practical AI integrations. Available for freelance and remote international work.",
+    "Amin Asadi Vosta (AminVost) is a full-stack software engineer in Tehran, Iran working across Next.js, React, React Native, PHP, APIs, production systems and practical AI integrations. Available for freelance and remote international work.",
   canonicalPath: "/",
   enPath: "/",
   faPath: "/fa",
@@ -26,17 +26,19 @@ export default function HomePage() {
 
       <section className="hero shell">
         <div className="eyebrow"><span className="dot" /> AminVost · Full-stack software engineer</div>
-        <h1>Full-stack software engineer for <span>web, mobile & practical AI.</span></h1>
-        {/* <div className="hero-copy">
-          <p>I’m {profile.name}, the developer behind AminVost. {profile.headline} I care about useful product decisions, clean interfaces and software that holds up in production.</p>
-          <div className="hero-side">
-            <InteractivePortrait locale="en" />
-            <div className="hero-actions">
+        <h1>Amin Asadi Vosta — <span>full-stack software engineer for web, mobile & practical AI.</span></h1>
+        <div className="hero-copy">
+          <div className="hero-intro">
+            <p>I’m Amin Asadi Vosta, also known as AminVost — a full-stack developer and software engineer based in Tehran, Iran. I build production web applications, React Native mobile apps, API-driven systems, PWAs and practical AI features for real products and teams.</p>
+            <div className="hero-actions hero-actions-start">
               <Link className="button primary" href="/projects">Explore projects <span aria-hidden="true">↗</span></Link>
               <Link className="button" href="/resume">View resume</Link>
             </div>
           </div>
-        </div> */}
+          <div className="hero-side">
+            <ProfilePhoto priority />
+          </div>
+        </div>
         <div className="stats">
           <div className="stat"><strong>6+ yrs</strong><span>professional development</span></div>
           <div className="stat"><strong>{projects.length}</strong><span>documented projects</span></div>
@@ -75,15 +77,20 @@ export default function HomePage() {
             </article>
           ))}
         </div>
+        <div className="expertise-links" aria-label="Specialist pages">
+          <Link href="/full-stack-developer-iran"><strong>Full-stack developer in Iran & Tehran</strong><span>Experience, stack and production case studies →</span></Link>
+          <Link href="/react-native-developer"><strong>React Native developer</strong><span>Mobile diagnostics, device integrations and app delivery →</span></Link>
+        </div>
       </section>
 
       <section className="section shell">
         <div className="split">
           <div>
-            <div className="eyebrow">How I work</div>
-            <h2>Simple ideas. Careful execution.</h2>
+            <div className="eyebrow">About AminVost</div>
+            <h2>Software engineering with product context.</h2>
           </div>
           <div className="stack">
+            <article className="stack-card"><h3>Amin Asadi Vosta</h3><p>AminVost is the professional identity I use for my software work. I work across front-end, backend, mobile, integrations and deployment, with an emphasis on maintainable systems that solve a real product problem.</p></article>
             {profile.principles.map((item) => <article className="stack-card" key={item.title}><h3>{item.title}</h3><p>{item.text}</p></article>)}
             <article className="stack-card"><h3>Rust, without pretending it is my main stack</h3><p>{profile.rustNote}</p></article>
           </div>

@@ -8,7 +8,7 @@ export const metadata: Metadata = pageMetadata({
   locale: "en",
   title: "Projects — Full-Stack, AI, Web & Mobile",
   description:
-    "Explore AminVost projects across Next.js and React web apps, PHP systems, React Native and PWA products, AI/OCR, API integrations, desktop tools and production infrastructure.",
+    "Explore projects by Amin Asadi Vosta (AminVost) across Next.js, React, PHP, React Native, PWA, AI/OCR, API integrations, desktop software and production infrastructure.",
   canonicalPath: "/projects",
   enPath: "/projects",
   faPath: "/fa/projects",

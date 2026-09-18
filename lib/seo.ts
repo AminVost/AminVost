@@ -1,4 +1,4 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import { profile } from "@/data/profile";
 
 export type SeoLocale = "en" | "fa";
@@ -6,7 +6,8 @@ export type SeoLocale = "en" | "fa";
 export const siteName = "AminVost";
 export const siteUrl = profile.domain.replace(/\/$/, "");
 export const ogImageUrl = `${siteUrl}/og-image.png`;
-export const profileImageUrl = `${siteUrl}/profile/amin-vost-portrait.webp`;
+export const profileImageUrl = `${siteUrl}/profile/amin-asadi-vosta-profile.png`;
+export const profileImageId = `${siteUrl}/#profile-image`;
 
 export function absoluteUrl(path = "/") {
   const normalized = path.startsWith("/") ? path : `/${path}`;
@@ -40,8 +41,8 @@ export function pageMetadata({
   const fullTitle = title
     ? `${title} | ${siteName}`
     : locale === "fa"
-      ? "Ø§Ù…ÛŒÙ† Ø§Ø³Ø¯ÛŒ ÙˆØ³Ø·Ù°ÛŒ | Ù…Ù‡Ù†Ø¯Ø³ Ù†Ø±Ù…â€ŒØ§ÙØ²Ø§Ø± ÙÙˆÙ„â€ŒØ§Ø³ØªÚ©"
-      : "AminVost | Full-Stack Software Engineer";
+      ? "امین اسدی وسطی (AminVost) | برنامه‌نویس و مهندس نرم‌افزار فول‌استک"
+      : "Amin Asadi Vosta (AminVost) | Full-Stack Software Engineer";
 
   return {
     ...(title ? { title } : {}),
@@ -58,7 +59,14 @@ export function pageMetadata({
       siteName,
       locale: locale === "fa" ? "fa_IR" : "en_US",
       alternateLocale: locale === "fa" ? ["en_US"] : ["fa_IR"],
-      images: [{ url: ogImageUrl, width: 1200, height: 630, alt: `${siteName} â€” Full-Stack Software Engineer` }],
+      images: [
+        {
+          url: ogImageUrl,
+          width: 1200,
+          height: 630,
+          alt: "Amin Asadi Vosta (AminVost) — Full-Stack Software Engineer",
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",
@@ -72,32 +80,48 @@ export function pageMetadata({
 export const personId = `${siteUrl}/#person`;
 export const websiteId = `${siteUrl}/#website`;
 
+export function profileImageJsonLd(locale: SeoLocale = "en") {
+  const isFa = locale === "fa";
+  return {
+    "@type": "ImageObject",
+    "@id": profileImageId,
+    contentUrl: profileImageUrl,
+    url: profileImageUrl,
+    width: 691,
+    height: 1280,
+    name: isFa
+      ? "عکس امین اسدی وسطی (AminVost)"
+      : "Amin Asadi Vosta (AminVost) portrait",
+    caption: isFa
+      ? "امین اسدی وسطی، مهندس نرم‌افزار و برنامه‌نویس فول‌استک در تهران"
+      : "Amin Asadi Vosta, full-stack software engineer in Tehran, Iran",
+    creator: { "@id": personId },
+  };
+}
+
 export function personJsonLd(locale: SeoLocale = "en") {
   const isFa = locale === "fa";
   return {
     "@type": "Person",
     "@id": personId,
-    name: profile.name,
+    name: "Amin Asadi Vosta",
     alternateName: [
       "AminVost",
       "Amin Vost",
       "Amin Asadi",
-      "Ø§Ù…ÛŒÙ† Ø§Ø³Ø¯ÛŒ ÙˆØ³Ø·Ù°ÛŒ",
-      "Ø§Ù…ÛŒÙ† Ø§Ø³Ø¯ÛŒ",
+      "Amin Asadi Vosta",
+      "امین اسدی",
+      "امین اسدی وسطی",
+      "امین اسدی‌ وسطی",
     ],
     url: siteUrl,
-    image: {
-      "@type": "ImageObject",
-      url: profileImageUrl,
-      width: 480,
-      height: 600,
-    },
+    image: profileImageJsonLd(locale),
     email: `mailto:${profile.email}`,
     telephone: profile.phone,
-    jobTitle: "Full-Stack Software Engineer",
+    jobTitle: isFa ? "مهندس نرم‌افزار فول‌استک" : "Full-Stack Software Engineer",
     description: isFa
-      ? "Ù…Ù‡Ù†Ø¯Ø³ Ù†Ø±Ù…â€ŒØ§ÙØ²Ø§Ø± ÙÙˆÙ„â€ŒØ§Ø³ØªÚ© Ø¯Ø± ØªÙ‡Ø±Ø§Ù† Ø¨Ø§ ØªÙ…Ø±Ú©Ø² Ø¨Ø± ØªÙˆØ³Ø¹Ù‡ ÙˆØ¨ØŒ Ù…ÙˆØ¨Ø§ÛŒÙ„ØŒ PWAØŒ ÛŒÚ©Ù¾Ø§Ø±Ú†Ù‡â€ŒØ³Ø§Ø²ÛŒ API Ùˆ Ù‚Ø§Ø¨Ù„ÛŒØªâ€ŒÙ‡Ø§ÛŒ Ú©Ø§Ø±Ø¨Ø±Ø¯ÛŒ Ù‡ÙˆØ´ Ù…ØµÙ†ÙˆØ¹ÛŒ."
-      : "Full-stack software engineer in Tehran focused on production web, mobile, PWA, API integration and practical AI features.",
+      ? "امین اسدی وسطی (AminVost)، برنامه‌نویس و مهندس نرم‌افزار فول‌استک در تهران با تمرکز بر توسعه وب، React Native، موبایل، API و هوش مصنوعی کاربردی."
+      : "Amin Asadi Vosta (AminVost) is a full-stack software engineer in Tehran focused on production web, React Native, mobile, API integration and practical AI features.",
     homeLocation: {
       "@type": "Place",
       name: "Tehran, Iran",
@@ -143,6 +167,7 @@ export function profilePageJsonLd(locale: SeoLocale, pageUrl: string) {
     url: pageUrl,
     inLanguage: locale === "fa" ? "fa-IR" : "en",
     mainEntity: personJsonLd(locale),
+    primaryImageOfPage: profileImageJsonLd(locale),
   };
 }
 
@@ -152,10 +177,42 @@ export function websiteJsonLd() {
     "@type": "WebSite",
     "@id": websiteId,
     name: siteName,
-    alternateName: ["Amin Vost", "Amin Asadi Vosta", "aminvost.ir"],
+    alternateName: [
+      "Amin Vost",
+      "Amin Asadi",
+      "Amin Asadi Vosta",
+      "امین اسدی",
+      "امین اسدی وسطی",
+      "aminvost.ir",
+    ],
     url: `${siteUrl}/`,
     inLanguage: ["en", "fa"],
     publisher: { "@id": personId },
+  };
+}
+
+export function expertisePageJsonLd({
+  locale,
+  url,
+  name,
+  description,
+}: {
+  locale: SeoLocale;
+  url: string;
+  name: string;
+  description: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": `${url}#webpage`,
+    url,
+    name,
+    description,
+    inLanguage: locale === "fa" ? "fa-IR" : "en",
+    about: { "@id": personId },
+    primaryImageOfPage: profileImageJsonLd(locale),
+    isPartOf: { "@id": websiteId },
   };
 }
 
@@ -171,4 +228,3 @@ export function breadcrumbJsonLd(items: Array<{ name: string; url: string }>) {
     })),
   };
 }
-

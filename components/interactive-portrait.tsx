@@ -74,10 +74,10 @@ export function InteractivePortrait({ locale = "en" }: InteractivePortraitProps)
     reset();
   };
 
-  const name = locale === "fa" ? "امین اسدی وسطٰی" : "Amin Asadi Vosta";
+  const name = locale === "fa" ? "امین اسدی وسطی" : "Amin Asadi Vosta";
   const location = locale === "fa" ? "تهران · همکاری ریموت" : "Tehran · Remote worldwide";
   const ariaLabel = locale === "fa"
-    ? "پرتره تعاملی امین اسدی وسطٰی"
+    ? "پرتره تعاملی امین اسدی وسطی"
     : "Interactive portrait of Amin Asadi Vosta";
 
   return (

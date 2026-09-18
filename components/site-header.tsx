@@ -13,7 +13,7 @@ export function SiteHeader({ locale = "en" }: { locale?: Locale }) {
         <Link
           className="brand"
           href={prefix || "/"}
-          aria-label={isFa ? "صفحه اصلی AminVost، امین اسدی وسطٰی" : "AminVost — Amin Asadi Vosta home"}
+          aria-label={isFa ? "صفحه اصلی AminVost، امین اسدی وسطی" : "AminVost — Amin Asadi Vosta home"}
         >
           <span className="brand-mark">AV</span>
           <span className="brand-name">

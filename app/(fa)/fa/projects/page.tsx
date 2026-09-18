@@ -8,7 +8,7 @@ export const metadata: Metadata = pageMetadata({
   locale: "fa",
   title: "پروژه‌ها — فول‌استک، وب، موبایل و هوش مصنوعی",
   description:
-    "نمونه‌کارهای AminVost و امین اسدی وسطٰی در توسعه وب و Next.js، PHP، اپلیکیشن موبایل و PWA، هوش مصنوعی و OCR، API، دسکتاپ و زیرساخت Production.",
+    "نمونه‌کارهای امین اسدی وسطی (AminVost) در توسعه وب و Next.js، React Native، PHP، اپلیکیشن موبایل و PWA، هوش مصنوعی و OCR، API، دسکتاپ و زیرساخت Production.",
   canonicalPath: "/fa/projects",
   enPath: "/projects",
   faPath: "/fa/projects",

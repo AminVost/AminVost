@@ -11,7 +11,7 @@ import { anta, manrope } from "../../fonts";
 export const metadata: Metadata = {
   metadataBase: new URL(profileFa.domain),
   title: {
-    default: "امین اسدی وسطٰی | مهندس نرم‌افزار فول‌استک",
+    default: "امین اسدی وسطی (AminVost) | برنامه‌نویس و مهندس نرم‌افزار فول‌استک",
     template: `%s | ${siteName}`,
   },
   description: profileFa.headline,

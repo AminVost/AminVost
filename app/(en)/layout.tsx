@@ -13,7 +13,7 @@ const googleSiteVerification = process.env.GOOGLE_SITE_VERIFICATION;
 export const metadata: Metadata = {
   metadataBase: new URL(profile.domain),
   title: {
-    default: "AminVost | Full-Stack Software Engineer",
+    default: "Amin Asadi Vosta (AminVost) | Full-Stack Software Engineer",
     template: `%s | ${siteName}`,
   },
   description: profile.headline,

@@ -7,7 +7,7 @@ export const metadata: Metadata = pageMetadata({
   locale: "fa",
   title: "رزومه — مهندس نرم‌افزار و برنامه‌نویس فول‌استک",
   description:
-    "رزومه امین اسدی وسطٰی (AminVost)، مهندس نرم‌افزار و برنامه‌نویس فول‌استک در تهران با بیش از ۶ سال تجربه حرفه‌ای در وب، موبایل و PWA، PHP، Next.js، API، Linux و هوش مصنوعی کاربردی.",
+    "رزومه امین اسدی وسطی (AminVost)، مهندس نرم‌افزار و برنامه‌نویس فول‌استک در تهران با بیش از ۶ سال تجربه حرفه‌ای در وب، موبایل و PWA، PHP، Next.js، API، Linux و هوش مصنوعی کاربردی.",
   canonicalPath: "/fa/resume",
   enPath: "/resume",
   faPath: "/fa/resume",
@@ -19,7 +19,7 @@ export default function PersianResumePage() {
     "@type": "WebPage",
     "@id": `${absoluteUrl("/fa/resume")}#webpage`,
     url: absoluteUrl("/fa/resume"),
-    name: "رزومه امین اسدی وسطٰی — مهندس نرم‌افزار فول‌استک",
+    name: "رزومه امین اسدی وسطی — مهندس نرم‌افزار فول‌استک",
     inLanguage: "fa-IR",
     about: { "@id": personId },
   };

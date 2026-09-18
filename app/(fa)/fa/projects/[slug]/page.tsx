@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return pageMetadata({
     locale: "fa",
     title: project.title,
-    description: project.summary,
+    description: `${project.summary} مطالعه موردی پروژه توسط امین اسدی وسطی (AminVost).`,
     canonicalPath: `/fa/projects/${project.slug}`,
     enPath: `/projects/${project.slug}`,
     faPath: `/fa/projects/${project.slug}`,
@@ -41,13 +41,13 @@ export default async function PersianProjectDetailPage({ params }: { params: Pro
     "@id": `${projectUrl}#project`,
     url: projectUrl,
     name: project.title,
-    description: project.summary,
+    description: `${project.summary} مطالعه موردی پروژه توسط امین اسدی وسطی (AminVost).`,
     inLanguage: "fa-IR",
     creator: {
       "@type": "Person",
       "@id": personId,
       name: "Amin Asadi Vosta",
-      alternateName: ["امین اسدی وسطٰی", "امین اسدی", "AminVost"],
+      alternateName: ["امین اسدی وسطی", "امین اسدی", "Amin Vost", "AminVost"],
     },
     isPartOf: { "@id": websiteId },
     keywords: [...project.categories.map((item) => faCategories[item]), ...project.technologies].join(", "),
@@ -97,6 +97,8 @@ export default async function PersianProjectDetailPage({ params }: { params: Pro
           </dl>
           {project.url && <a className="button primary" href={project.url} target="_blank" rel="noreferrer">مشاهده پروژه زنده ↗</a>}
           <Link className="button" href="/fa/resume">مشاهده رزومه کامل</Link>
+          <Link className="button" href="/fa/full-stack-developer-tehran">پروفایل برنامه‌نویس فول‌استک</Link>
+          {project.categories.includes("Mobile") && <Link className="button" href="/fa/react-native-developer">تجربه React Native</Link>}
         </aside>
       </div>
     </article>

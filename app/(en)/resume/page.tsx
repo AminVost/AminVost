@@ -7,7 +7,7 @@ export const metadata: Metadata = pageMetadata({
   locale: "en",
   title: "Resume — Full-Stack Software Engineer",
   description:
-    "Resume of Amin Asadi Vosta (AminVost), a full-stack software engineer in Tehran with 6+ years of professional development experience across web, mobile/PWA, PHP, Next.js, APIs, Linux and practical AI integrations.",
+    "Resume of Amin Asadi Vosta (AminVost), a full-stack developer and software engineer in Tehran with 6+ years of professional experience across Next.js, React Native, PHP, APIs, Linux and practical AI integrations.",
   canonicalPath: "/resume",
   enPath: "/resume",
   faPath: "/fa/resume",
