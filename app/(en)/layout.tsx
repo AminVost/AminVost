@@ -5,6 +5,7 @@ import { SiteHeader } from "@/components/site-header";
 import { Footer } from "@/components/footer";
 import { MobileTabBar } from "@/components/mobile-tab-bar";
 import { GoogleAnalytics } from "@/components/google-analytics";
+import { ResumeAssistantShell } from "@/components/resume-assistant/resume-assistant-shell";
 import { profile } from "@/data/profile";
 import { siteName } from "@/lib/seo";
 import { anta, manrope } from "../fonts";
@@ -65,6 +66,7 @@ export default function EnglishLayout({ children }: Readonly<{ children: ReactNo
         <main className="site-main">{children}</main>
         <Footer locale="en" />
         <MobileTabBar locale="en" />
+        <ResumeAssistantShell locale="en" />
         <GoogleAnalytics />
       </body>
     </html>

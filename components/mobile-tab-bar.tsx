@@ -70,19 +70,15 @@ export function MobileTabBar({ locale = "en" }: { locale?: Locale }) {
   const [visibleSection, setVisibleSection] = useState<TabKey | null>(null);
 
   useEffect(() => {
-    if (!isHome) {
-      setVisibleSection(null);
-      return;
-    }
+    if (!isHome) return;
 
-    const readHash = () => {
+    const handleHashChange = () => {
       if (window.location.hash === "#contact") setVisibleSection("contact");
       else if (window.location.hash === "#focus") setVisibleSection("focus");
       else setVisibleSection(null);
     };
 
-    readHash();
-    window.addEventListener("hashchange", readHash);
+    window.addEventListener("hashchange", handleHashChange);
 
     const targets = ["focus", "contact"]
       .map((id) => document.getElementById(id))
@@ -103,12 +99,13 @@ export function MobileTabBar({ locale = "en" }: { locale?: Locale }) {
     targets.forEach((target) => observer.observe(target));
 
     return () => {
-      window.removeEventListener("hashchange", readHash);
+      window.removeEventListener("hashchange", handleHashChange);
       observer.disconnect();
     };
-  }, [isHome, pathname]);
+  }, [isHome]);
 
-  const active: TabKey = visibleSection
+  const activeSection = isHome ? visibleSection : null;
+  const active: TabKey = activeSection
     ?? (pathname.includes("/projects")
       ? "projects"
       : pathname.includes("/resume")
