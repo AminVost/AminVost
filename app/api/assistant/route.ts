@@ -6,6 +6,7 @@ import {
   type UIMessage,
 } from "ai";
 import { createResumeAssistant } from "@/lib/ai/agent";
+import { hasGeminiApiKeys } from "@/lib/ai/gemini-key-pool";
 import {
   isPromptInjectionAttempt,
   isResumeScopedQuestion,
@@ -164,7 +165,7 @@ export async function POST(request: NextRequest) {
     return staticMessage(messages, scopedRefusal(locale));
   }
 
-  if (!process.env.GOOGLE_GENERATIVE_AI_API_KEY) {
+  if (!hasGeminiApiKeys()) {
     return Response.json(
       { error: "AI assistant is temporarily unavailable." },
       { status: 503 },

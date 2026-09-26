@@ -21,7 +21,7 @@ Copy the relevant values from `.env.example` into `.env.local`.
 Required for AI:
 
 ```env
-GOOGLE_GENERATIVE_AI_API_KEY=
+GEMINI_API_KEY_POOL=[{"key":"YOUR_KEY_1","projectId":"google-project-1","priority":1,"rpm":10,"tpm":250000,"rpd":250},{"key":"YOUR_KEY_2","projectId":"google-project-2","priority":2,"rpm":10,"tpm":250000,"rpd":250}]
 AI_CHAT_SESSION_SECRET=
 ```
 
@@ -31,7 +31,30 @@ Generate the session secret with:
 node -e "console.log(require('crypto').randomBytes(48).toString('hex'))"
 ```
 
-The assistant uses `gemini-3.8-flash` through the server-only `@ai-sdk/google` provider. The Gemini key is never sent to the browser.
+Use the actual quota values displayed for the selected model and account tier;
+the numbers above are formatting examples, not guaranteed Google limits. Keys
+that belong to the same Google project must use the same `projectId`, because
+they share quota. Separate Google projects should have different IDs.
+
+`GOOGLE_GENERATIVE_AI_API_KEY` remains supported as a one-key fallback. A
+comma-separated `GOOGLE_GENERATIVE_AI_API_KEYS` plus the global
+`GEMINI_RPM_LIMIT`, `GEMINI_TPM_LIMIT` and `GEMINI_RPD_LIMIT` variables is also
+supported, but the JSON pool is preferred.
+
+The assistant uses `gemini-2.5-flash` through the server-only `@ai-sdk/google`
+provider. The Gemini keys are never sent to the browser or written to logs.
+
+The pool reserves RPM/TPM/RPD capacity before every model call, including
+agent tool-loop steps. A Gemini 429 response overrides local counters: daily
+quota blocks that Google project until Pacific midnight, while minute quota
+uses `Retry-After` (or a one-minute fallback). Invalid keys are removed from
+the current warm instance and the request is retried with the next eligible
+key.
+
+Vercel serverless instances do not share memory. Local counters therefore
+reduce avoidable quota errors within each warm instance, while Google's real
+429 response remains the authoritative cross-instance signal. Strict global
+counters would require a shared store such as Vercel KV/Redis or a database.
 
 ## 3. Cloudflare Turnstile (required in production)
 
@@ -128,7 +151,7 @@ The application also limits cost before the model is called:
 In **Vercel → Project → Settings → Environment Variables**, add at least:
 
 ```text
-GOOGLE_GENERATIVE_AI_API_KEY
+GEMINI_API_KEY_POOL
 AI_CHAT_SESSION_SECRET
 NEXT_PUBLIC_TURNSTILE_SITE_KEY
 TURNSTILE_SECRET_KEY
