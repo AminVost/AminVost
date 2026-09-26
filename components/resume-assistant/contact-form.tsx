@@ -139,13 +139,13 @@ export function ContactForm({
           <label className="resume-contact-detail">
             <span>
               {contactMethod === "telegram"
-                ? isFa ? "نام کاربری تلگرام" : "Telegram username"
+                ? isFa ? "نام کاربری تلگرام (اختیاری)" : "Telegram username (optional)"
                 : isFa ? "شماره تماس" : "Phone number"}
             </span>
             <input
               name="contactValue"
-              required
-              minLength={3}
+              required={contactMethod === "phone"}
+              minLength={contactMethod === "phone" ? 3 : undefined}
               maxLength={120}
               autoComplete={contactMethod === "phone" ? "tel" : "off"}
               inputMode={contactMethod === "phone" ? "tel" : "text"}

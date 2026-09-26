@@ -30,7 +30,7 @@ const contactSchema = z.object({
     .max(10)
     .default([]),
 }).superRefine((data, context) => {
-  if (data.contactMethod !== "email" && data.contactValue.length < 3) {
+  if (data.contactMethod === "phone" && data.contactValue.length < 3) {
     context.addIssue({
       code: "custom",
       path: ["contactValue"],
