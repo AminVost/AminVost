@@ -146,13 +146,13 @@ function AssistantChat({
         ["تجربه کاری", "درباره تجربه کاری و سابقه حرفه‌ای امین توضیح بده."],
         ["مهارت‌ها", "مهارت‌های اصلی امین چیست؟"],
         ["تجربه AI", "امین در هوش مصنوعی و OCR چه تجربه‌ای دارد؟"],
-        ["پروژه‌های مرتبط", "چند پروژه مهم و متنوع امین را معرفی کن."],
+        ["تجربه موبایل", "تجربه امین در React Native، اپلیکیشن موبایل، Device API و PWA را با پروژه‌های مرتبط توضیح بده."],
       ]
     : [
         ["Experience", "Tell me about Amin's professional experience."],
         ["Skills", "What are Amin's main technical skills?"],
         ["AI experience", "What experience does Amin have with AI and OCR?"],
-        ["Relevant projects", "Show me a few important and varied projects Amin has worked on."],
+        ["Mobile experience", "Show me Amin's verified React Native, mobile device and PWA experience with relevant projects."],
       ];
 
   return (

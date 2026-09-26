@@ -5,6 +5,7 @@ import { featuredProjectsFa, gameProjectsFa, projectsFa } from "@/data/projects-
 import { ProjectCard } from "@/components/project-card";
 import { JsonLd } from "@/components/json-ld";
 import { ProfilePhoto } from "@/components/profile-photo";
+import { MobileEngineeringShowcase } from "@/components/mobile-engineering-showcase";
 import { absoluteUrl, pageMetadata, profilePageJsonLd, websiteJsonLd } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
@@ -17,7 +18,9 @@ export const metadata: Metadata = pageMetadata({
 });
 
 export default function PersianHomePage() {
-  const selected = featuredProjectsFa.filter((project) => !project.categories.includes("Game")).slice(0, 7);
+  const selected = featuredProjectsFa
+    .filter((project) => !project.categories.includes("Game") && !project.categories.includes("Mobile"))
+    .slice(0, 7);
 
   return (
     <>
@@ -34,6 +37,7 @@ export default function PersianHomePage() {
               <div className="hero-actions hero-actions-start">
                 <Link className="button primary" href="/fa/projects">مشاهده پروژه‌ها <span aria-hidden="true">↗</span></Link>
                 <Link className="button" href="/fa/resume">مشاهده رزومه</Link>
+                <Link className="button" href="/fa/react-native-developer">تجربه توسعه موبایل</Link>
               </div>
             </div>
           </div>
@@ -64,6 +68,8 @@ export default function PersianHomePage() {
           {selected.map((project, index) => <ProjectCard key={project.slug} project={project} large={index === 0} locale="fa" index={index} />)}
         </div>
       </section>
+
+      <MobileEngineeringShowcase projects={projectsFa} locale="fa" />
 
       <section className="section shell selected-work-section game-projects-section" id="games">
         <div className="selected-work-head">

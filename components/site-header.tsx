@@ -23,6 +23,7 @@ export function SiteHeader({ locale = "en" }: { locale?: Locale }) {
 
         <nav className="nav" aria-label={isFa ? "ناوبری اصلی" : "Primary navigation"}>
           <Link href={`${prefix}/projects`}>{isFa ? "پروژه‌ها" : "Projects"}</Link>
+          <Link href={`${prefix}/react-native-developer`}>{isFa ? "موبایل" : "Mobile"}</Link>
           <Link href={`${prefix}/resume`}>{isFa ? "رزومه" : "Resume"}</Link>
           <Link href={`${prefix}/#focus`}>{isFa ? "حوزه‌های کاری" : "Focus"}</Link>
           <Link href={`${prefix}/#contact`}>{isFa ? "تماس" : "Contact"}</Link>

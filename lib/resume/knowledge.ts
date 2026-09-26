@@ -2,6 +2,7 @@ import { profile } from "@/data/profile";
 import { profileFa } from "@/data/profile-fa";
 import { projects } from "@/data/projects";
 import { projectsFa } from "@/data/projects-fa";
+import { getMasterCareerProfile } from "@/data/master-career-profile";
 
 export type ResumeLocale = "en" | "fa";
 
@@ -21,6 +22,7 @@ const toTokens = (value: string) =>
 export function getPublicResumeKnowledge(locale: ResumeLocale = "en") {
   const source = locale === "fa" ? profileFa : profile;
   const sourceProjects = locale === "fa" ? projectsFa : projects;
+  const master = getMasterCareerProfile(locale);
 
   return {
     profile: {
@@ -43,6 +45,20 @@ export function getPublicResumeKnowledge(locale: ResumeLocale = "en") {
       group: group.label,
       items: [...group.items],
     })),
+    careerDetails: {
+      positioning: { ...master.positioning },
+      completeTechnicalInventory: master.completeTechnicalInventory.map((group) => ({
+        group: group.group,
+        items: [...group.items],
+      })),
+      appliedAiExperience: [...master.appliedAiExperience],
+      additionalTechnicalExperience: [...master.additionalTechnicalExperience],
+      professionalPreferences: {
+        ...master.professionalPreferences,
+        workModes: [...master.professionalPreferences.workModes],
+        preferredTitles: [...master.professionalPreferences.preferredTitles],
+      },
+    },
     experience: source.experience.map((item) => ({
       company: item.company,
       role: item.role,
@@ -63,6 +79,7 @@ export function getPublicResumeKnowledge(locale: ResumeLocale = "en") {
       categories: [...project.categories],
       projectUrl: `${locale === "fa" ? "/fa" : ""}/projects/${project.slug}`,
       externalUrl: project.url ?? null,
+      additionalUrls: project.additionalUrls?.map((item) => ({ ...item })) ?? [],
       featured: project.featured,
       featuredRank: project.featuredRank,
     })),
@@ -73,6 +90,19 @@ export function getPublicResumeKnowledge(locale: ResumeLocale = "en") {
       phone: source.phone,
     },
   };
+}
+
+export function getResumeProjectDetails(
+  slug: string,
+  locale: ResumeLocale = "en",
+) {
+  const normalizedSlug = normaliseText(slug);
+  const knowledge = getPublicResumeKnowledge(locale);
+
+  return knowledge.projects.find((project) =>
+    normaliseText(project.slug) === normalizedSlug
+    || normaliseText(project.title) === normalizedSlug,
+  ) ?? null;
 }
 
 export type ProjectSearchResult = {
@@ -170,12 +200,26 @@ export function getFeaturedResumeProjects(
 export function getScopeVocabulary() {
   const knowledge = getPublicResumeKnowledge("en");
   const faKnowledge = getPublicResumeKnowledge("fa");
+  const careerValues = [knowledge, faKnowledge].flatMap((item) => [
+    ...item.careerDetails.completeTechnicalInventory.flatMap((group) => [group.group, ...group.items]),
+    ...item.careerDetails.appliedAiExperience,
+    ...item.careerDetails.additionalTechnicalExperience,
+    ...item.careerDetails.professionalPreferences.workModes,
+    ...item.careerDetails.professionalPreferences.preferredTitles,
+    item.careerDetails.professionalPreferences.countryRestriction,
+    item.careerDetails.professionalPreferences.titleGuidance,
+    item.careerDetails.professionalPreferences.proficiencyGuardrail,
+    item.careerDetails.positioning.mainPositioning,
+    item.careerDetails.positioning.aiFocusedPositioning,
+    item.careerDetails.positioning.currentEmploymentStatus,
+  ]);
   const values = [
     knowledge.profile.name,
     knowledge.profile.shortName,
     knowledge.profile.brandName,
     ...knowledge.profile.aliases,
     ...faKnowledge.profile.aliases,
+    ...careerValues,
     ...knowledge.skills.flatMap((group) => group.items),
     ...knowledge.projects.flatMap((project) => [
       project.title,

@@ -42,6 +42,13 @@ export default function ReactNativeDeveloperPage() {
         <ProfilePhoto />
       </header>
 
+      <section className="mobile-proof-stats" aria-label="Mobile engineering overview">
+        <div><strong>React Native</strong><span>Native-focused application work</span></div>
+        <div><strong>iOS + Android</strong><span>Physical-device testing and debugging</span></div>
+        <div><strong>Device APIs</strong><span>BLE, NFC, biometrics, camera and sensors</span></div>
+        <div><strong>Connected apps</strong><span>REST, WebSocket and companion tooling</span></div>
+      </section>
+
       <section className="section expertise-copy-section">
         <div className="section-head">
           <div><div className="eyebrow">Mobile engineering</div><h2>React Native beyond basic screens.</h2></div>
@@ -60,7 +67,19 @@ export default function ReactNativeDeveloperPage() {
           <div><div className="eyebrow">Mobile projects</div><h2>React Native and mobile case studies.</h2></div>
           <div className="selected-work-side"><p>Projects that show hands-on mobile development rather than generic technology keywords.</p></div>
         </div>
-        <ExpertiseProjects projects={projects} slugs={["rapidmobilediag", "todolist-mobile-app"]} />
+        <div className="notice mobile-delivery-note">
+          RapidMobileDiag is the primary React Native/native-focused case study. Pantomin, Shab and the competition platform demonstrate installable PWA and mobile-first product delivery; they are not presented as native applications.
+        </div>
+        <ExpertiseProjects
+          projects={projects}
+          slugs={[
+            "rapidmobilediag",
+            "pantomin-pantomim-aminvost-ir",
+            "competition-management-platform-game-aminvost-ir",
+            "shab-persian-mafia-game",
+            "todolist-mobile-app",
+          ]}
+        />
       </section>
 
       <section className="section expertise-copy-section">
@@ -75,7 +94,7 @@ export default function ReactNativeDeveloperPage() {
 
       <section className="cta">
         <div><h2>Need React Native work connected to a real backend or device workflow?</h2><p>Send the project requirements, target devices and integrations and I can review the technical scope.</p></div>
-        <div className="hero-actions"><a className="button primary" href={`mailto:${profile.email}`}>Email me</a><Link className="button" href="/full-stack-developer-iran">Full-stack experience</Link></div>
+        <div className="hero-actions"><Link className="button primary" href="/#contact">Discuss a mobile project</Link><a className="button" href={`mailto:${profile.email}`}>Email me</a></div>
       </section>
     </div>
   );

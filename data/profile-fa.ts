@@ -47,6 +47,7 @@ export const profileFa = {
         "Integration پرداخت، SMS/Email، Authentication، Calendar، WebSocket و قابلیت‌های AI در سطح محصول.",
         "استقرار و عیب‌یابی سرویس‌های Production روی Linux/VPS با Nginx، systemd، SSL و ابزارهای مرتبط.",
         "مشارکت در ایده‌پردازی، طراحی رابط و Flow کاربر علاوه بر پیاده‌سازی فنی.",
+        "استفاده از توسعه AI-Assisted در کار روزمره و تجربه عملی محدود با Hermes Agent و ابزارهای Agentic مشابه؛ در سطح Tooling و نه تخصص عمیق Agent Framework.",
       ],
     },
   ],
@@ -58,7 +59,7 @@ export const profileFa = {
   },
   languages: [
     { language: "فارسی", level: "زبان مادری" },
-    { language: "انگلیسی", level: "سطح متوسط؛ نقطه قوت اصلی در مطالعه مستندات و متون فنی است." },
+    { language: "انگلیسی", level: "سطح کلی متوسط؛ مطالعه و درک مستندات فنی قوی‌ترین بخش است، نوشتن متوسط، شنیدن متوسط تا خوب و مکالمه پایه تا متوسط است." },
   ],
   aiNote: "تجربه من در AI بیشتر کاربردی و Product-Oriented است تا پژوهشی. با APIهای خارجی و مدل‌های Local قابلیت‌هایی مثل خلاصه‌سازی نظرها، تشخیص مثبت یا منفی بودن Reviewها، تشخیص و Recognition متن داخل تصویر و استخراج و یکپارچه‌سازی نام محصول، SKU و قیمت از لیست‌های قیمت ساخته‌ام. با Qwen، QLoRA Adapter، PaddleOCR، Gemini/OpenAI API و مدل‌های Pretrained مثل BERT در Hugging Face کار کرده‌ام و تجربه محدود عملی با Hermes Agent و ابزارهای Agentic مشابه هم دارم.",
   rustNote: "در پروژه Local Gateway تجربه عملی در سطح Integration و اصلاح کد Rust دارم، اما Rust جزو زبان‌های اصلی من نیست.",

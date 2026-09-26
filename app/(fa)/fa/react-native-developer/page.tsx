@@ -42,6 +42,13 @@ export default function PersianReactNativeDeveloperPage() {
         <ProfilePhoto locale="fa" />
       </header>
 
+      <section className="mobile-proof-stats" aria-label="نمای کلی تجربه مهندسی موبایل">
+        <div><strong>React Native</strong><span>تجربه متمرکز بر اپلیکیشن Native</span></div>
+        <div><strong>iOS + Android</strong><span>تست و Debug روی دستگاه واقعی</span></div>
+        <div><strong>Device API</strong><span>BLE، NFC، Biometrics، Camera و Sensor</span></div>
+        <div><strong>Connected Apps</strong><span>REST، WebSocket و ابزارهای Companion</span></div>
+      </section>
+
       <section className="section expertise-copy-section">
         <div className="section-head">
           <div><div className="eyebrow">مهندسی موبایل</div><h2>React Native فراتر از رابط کاربری.</h2></div>
@@ -60,7 +67,20 @@ export default function PersianReactNativeDeveloperPage() {
           <div><div className="eyebrow">پروژه‌های موبایل</div><h2>نمونه پروژه‌های React Native و موبایل.</h2></div>
           <div className="selected-work-side"><p>نمونه‌هایی که تجربه عملی Mobile Development را نشان می‌دهند.</p></div>
         </div>
-        <ExpertiseProjects projects={projectsFa} locale="fa" slugs={["rapidmobilediag", "todolist-mobile-app"]} />
+        <div className="notice mobile-delivery-note">
+          RapidMobileDiag نمونه اصلی تجربه React Native و Native-Focused است. Pantomin، Shab و پلتفرم مسابقات نمونه‌های PWA نصب‌پذیر و Mobile-First هستند و به‌عنوان اپلیکیشن Native معرفی نمی‌شوند.
+        </div>
+        <ExpertiseProjects
+          projects={projectsFa}
+          locale="fa"
+          slugs={[
+            "rapidmobilediag",
+            "pantomin-pantomim-aminvost-ir",
+            "competition-management-platform-game-aminvost-ir",
+            "shab-persian-mafia-game",
+            "todolist-mobile-app",
+          ]}
+        />
       </section>
 
       <section className="section expertise-copy-section">
@@ -75,7 +95,7 @@ export default function PersianReactNativeDeveloperPage() {
 
       <section className="cta">
         <div><h2>برای پروژه React Native به توسعه Device یا Backend Integration نیاز دارید؟</h2><p>نیازمندی‌ها، دستگاه‌های هدف و Integrationهای پروژه را بفرستید تا Scope فنی مشخص شود.</p></div>
-        <div className="hero-actions"><a className="button primary" href={`mailto:${profileFa.email}`}>ارسال ایمیل</a><Link className="button" href="/fa/full-stack-developer-tehran">تجربه فول‌استک</Link></div>
+        <div className="hero-actions"><Link className="button primary" href="/fa#contact">گفت‌وگو درباره پروژه موبایل</Link><a className="button" href={`mailto:${profileFa.email}`}>ارسال ایمیل</a></div>
       </section>
     </div>
   );

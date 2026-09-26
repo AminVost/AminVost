@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import type { ReactNode } from "react";
 
 type Locale = "en" | "fa";
-type TabKey = "home" | "projects" | "resume" | "focus" | "contact";
+type TabKey = "home" | "projects" | "mobile" | "resume" | "contact";
 
 type Tab = {
   key: TabKey;
@@ -43,11 +43,11 @@ function ResumeIcon() {
   );
 }
 
-function FocusIcon() {
+function MobileIcon() {
   return (
     <svg viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M8 3.8H5.8a2 2 0 0 0-2 2V8M16 3.8h2.2a2 2 0 0 1 2 2V8M20.2 16v2.2a2 2 0 0 1-2 2H16M8 20.2H5.8a2 2 0 0 1-2-2V16" />
-      <circle cx="12" cy="12" r="3.1" />
+      <rect x="6.5" y="2.8" width="11" height="18.4" rx="2.5" />
+      <path d="M10 5.7h4M10.7 18.2h2.6" />
     </svg>
   );
 }
@@ -74,13 +74,12 @@ export function MobileTabBar({ locale = "en" }: { locale?: Locale }) {
 
     const handleHashChange = () => {
       if (window.location.hash === "#contact") setVisibleSection("contact");
-      else if (window.location.hash === "#focus") setVisibleSection("focus");
       else setVisibleSection(null);
     };
 
     window.addEventListener("hashchange", handleHashChange);
 
-    const targets = ["focus", "contact"]
+    const targets = ["contact"]
       .map((id) => document.getElementById(id))
       .filter((element): element is HTMLElement => Boolean(element));
 
@@ -89,8 +88,8 @@ export function MobileTabBar({ locale = "en" }: { locale?: Locale }) {
         const visible = entries
           .filter((entry) => entry.isIntersecting)
           .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-        if (visible?.target.id === "focus" || visible?.target.id === "contact") {
-          setVisibleSection(visible.target.id);
+        if (visible?.target.id === "contact") {
+          setVisibleSection("contact");
         }
       },
       { rootMargin: "-25% 0px -55% 0px", threshold: [0.05, 0.2, 0.45] },
@@ -110,15 +109,15 @@ export function MobileTabBar({ locale = "en" }: { locale?: Locale }) {
       ? "projects"
       : pathname.includes("/resume")
         ? "resume"
-        : pathname.includes("full-stack-developer") || pathname.includes("react-native-developer")
-          ? "focus"
+        : pathname.includes("react-native-developer")
+          ? "mobile"
           : "home");
 
   const tabs: Tab[] = [
     { key: "home", href: homeHref, label: isFa ? "خانه" : "Home", icon: <HomeIcon /> },
     { key: "projects", href: `${prefix}/projects`, label: isFa ? "پروژه‌ها" : "Projects", icon: <ProjectsIcon /> },
+    { key: "mobile", href: `${prefix}/react-native-developer`, label: isFa ? "موبایل" : "Mobile", icon: <MobileIcon /> },
     { key: "resume", href: `${prefix}/resume`, label: isFa ? "رزومه" : "Resume", icon: <ResumeIcon /> },
-    { key: "focus", href: `${homeHref}#focus`, label: isFa ? "تخصص‌ها" : "Focus", icon: <FocusIcon /> },
     { key: "contact", href: `${homeHref}#contact`, label: isFa ? "تماس" : "Contact", icon: <ContactIcon /> },
   ];
 
@@ -132,7 +131,7 @@ export function MobileTabBar({ locale = "en" }: { locale?: Locale }) {
               key={tab.key}
               className={`mobile-tab ${isActive ? "is-active" : ""}`}
               href={tab.href}
-              aria-current={isActive ? (tab.key === "focus" || tab.key === "contact" ? "location" : "page") : undefined}
+              aria-current={isActive ? (tab.key === "contact" ? "location" : "page") : undefined}
             >
               <span className="mobile-tab-icon">{tab.icon}</span>
               <span className="mobile-tab-label">{tab.label}</span>

@@ -610,6 +610,7 @@ export const projects: Project[] = [
     ],
     "categories": [
       "Web",
+      "Mobile",
       "Infrastructure",
       "Product",
       "Game"
@@ -901,14 +902,21 @@ export const projects: Project[] = [
     "summary": "Mobile-device diagnostic application built with React Native for iOS and Android, covering device-test workflows and communication with companion services/tooling.",
     "highlights": [
       "Worked with React Native diagnostic flows for iOS/Android and device-oriented features such as BLE, NFC, biometrics, camera, audio/video, geolocation, sensors and voice/TTS where supported by the target platform.",
-      "Worked with device communication/status flows, including ADB/WebSocket-style integration in relevant environments; also had limited Flutter exposure in a companion desktop/launcher context."
+      "Handled permission, capability and real-device differences as part of the diagnostic UX, including explicit supported/not-supported paths where a device could not expose a test.",
+      "Worked with device communication and status flows, including ADB/WebSocket-style integration with companion services and tooling in relevant environments.",
+      "Debugged cross-platform behavior on physical iOS/Android devices; also had limited Flutter exposure in a companion desktop/launcher context."
     ],
     "technologies": [
       "React Native",
-      "iOS/Android",
+      "iOS",
+      "Android",
       "JavaScript",
-      "ADB/WebSocket integrations",
-      "BLE/NFC/sensors",
+      "WebSocket",
+      "ADB integration",
+      "BLE",
+      "NFC",
+      "Biometrics",
+      "Device sensors",
       "Flutter exposure"
     ],
     "categories": [

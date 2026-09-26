@@ -244,7 +244,12 @@ const fa: Record<number, ProjectFaOverride> = {
     role: "توسعه‌دهنده Mobile / Cross-Platform",
     contribution: "تجربه عملی React Native، Debug و Integration در پروژه‌های Mobile Diagnostic مرتبط با WebNevisan/MyRapidTrack.",
     summary: "اپلیکیشن Diagnostic موبایل با React Native برای iOS و Android که Workflowهای تست Device و ارتباط با سرویس‌های جانبی را پوشش می‌دهد.",
-    highlights: ["کار روی Flowهای Diagnostic در React Native برای iOS/Android و Featureهایی مثل BLE، NFC، Biometrics، Camera، Audio/Video، Geolocation، Sensor و Voice/TTS در Platformهای قابل پشتیبانی.", "کار با Device Communication و Status Flow، از جمله Integrationهای ADB/WebSocket در محیط‌های مرتبط؛ همچنین تجربه محدود Flutter در یک Context جانبی Desktop/Launcher."]
+    highlights: [
+      "کار روی Flowهای Diagnostic در React Native برای iOS/Android و Featureهایی مثل BLE، NFC، Biometrics، Camera، Audio/Video، Geolocation، Sensor و Voice/TTS در Platformهای قابل پشتیبانی.",
+      "مدیریت Permission، تفاوت قابلیت‌ها و رفتار دستگاه واقعی به‌عنوان بخشی از UX تشخیص، همراه با مسیر مشخص Supported/Not Supported برای تست‌های غیرقابل‌دسترسی.",
+      "کار روی جریان‌های ارتباط و وضعیت دستگاه، شامل Integrationهای ADB/WebSocket با سرویس‌ها و ابزارهای Companion در محیط‌های مرتبط.",
+      "Debug رفتار Cross-Platform روی دستگاه‌های واقعی iOS/Android؛ همچنین تجربه محدود Flutter در یک Context جانبی Desktop/Launcher."
+    ]
   },
   29: {
     context: "توسعه موبایل",

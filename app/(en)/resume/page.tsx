@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { JsonLd } from "@/components/json-ld";
 import { profile } from "@/data/profile";
 import { absoluteUrl, breadcrumbJsonLd, pageMetadata, personId } from "@/lib/seo";
@@ -51,6 +52,23 @@ export default function ResumePage() {
             <div className="timeline-time">{item.period}</div>
             <div><h3>{item.company}</h3><h4>{item.role}</h4><p>{item.text}</p><ul>{item.bullets.map((bullet) => <li key={bullet}>{bullet}</li>)}</ul></div>
           </article>)}
+        </div>
+      </section>
+
+      <section className="section mobile-resume-section">
+        <div className="split">
+          <div>
+            <div className="eyebrow">Mobile engineering</div>
+            <h2>React Native, device workflows and installable web apps.</h2>
+            <div className="hero-actions hero-actions-start">
+              <Link className="button primary" href="/react-native-developer">Mobile experience</Link>
+              <Link className="button" href="/projects/rapidmobilediag">RapidMobileDiag</Link>
+            </div>
+          </div>
+          <div className="stack">
+            <article className="stack-card"><h3>Native-focused delivery</h3><p>Hands-on React Native work for iOS/Android diagnostic flows involving BLE, NFC, biometrics, camera, audio/video, geolocation, sensors, permissions and real-device debugging.</p></article>
+            <article className="stack-card"><h3>Cross-platform product delivery</h3><p>PWA and mobile-first products with Service Worker, offline/local-first behavior, installability, safe-area support and connection to APIs, WebSocket or companion services.</p></article>
+          </div>
         </div>
       </section>
 

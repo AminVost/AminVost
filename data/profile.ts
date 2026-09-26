@@ -47,6 +47,7 @@ export const profile = {
         "Integrate payments, SMS/email, authentication, calendars, WebSockets and application-level AI features.",
         "Deploy and troubleshoot production services on Linux/VPS with Nginx, systemd, SSL and related tooling.",
         "Contribute product ideas, interface concepts and user-flow design in addition to implementation.",
+        "Use AI-assisted development in day-to-day work and have limited hands-on experimentation with Hermes Agent and similar agentic tools; useful tooling experience rather than deep agent-framework specialization.",
       ],
     },
   ],
@@ -58,7 +59,7 @@ export const profile = {
   },
   languages: [
     { language: "Persian", level: "Native" },
-    { language: "English", level: "Intermediate overall; strongest in technical reading and documentation." },
+    { language: "English", level: "Intermediate overall. Strongest in technical reading and documentation; writing is intermediate, listening is intermediate-to-good, and speaking is basic-to-intermediate." },
   ],
   aiNote: "My AI experience is application-focused rather than research-focused. I have used external AI APIs and local models to add practical features such as review summarization, positive/negative sentiment analysis, text detection and recognition in images, and structured extraction/normalization of product names, SKUs and prices from supplier price lists. I have worked with local Qwen models, QLoRA adapters, PaddleOCR, Gemini/OpenAI APIs and pretrained Hugging Face/BERT models, and I have limited hands-on experimentation with Hermes Agent and similar agentic tools.",
   rustNote: "I have working/integration-level Rust experience from local gateway work. Rust is not one of my primary languages.",

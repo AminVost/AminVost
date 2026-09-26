@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { JsonLd } from "@/components/json-ld";
 import { profileFa } from "@/data/profile-fa";
 import { absoluteUrl, breadcrumbJsonLd, pageMetadata, personId } from "@/lib/seo";
@@ -51,6 +52,23 @@ export default function PersianResumePage() {
             <div className="timeline-time">{item.period}</div>
             <div><h3>{item.company}</h3><h4>{item.role}</h4><p>{item.text}</p><ul>{item.bullets.map((bullet) => <li key={bullet}>{bullet}</li>)}</ul></div>
           </article>)}
+        </div>
+      </section>
+
+      <section className="section mobile-resume-section">
+        <div className="split">
+          <div>
+            <div className="eyebrow">مهندسی موبایل</div>
+            <h2>React Native، جریان‌های Device و وب‌اپ‌های نصب‌پذیر.</h2>
+            <div className="hero-actions hero-actions-start">
+              <Link className="button primary" href="/fa/react-native-developer">تجربه کامل موبایل</Link>
+              <Link className="button" href="/fa/projects/rapidmobilediag">RapidMobileDiag</Link>
+            </div>
+          </div>
+          <div className="stack">
+            <article className="stack-card"><h3>توسعه Native-Focused</h3><p>تجربه عملی React Native برای Flowهای Diagnostic در iOS/Android شامل BLE، NFC، Biometrics، Camera، Audio/Video، Geolocation، Sensor، Permission و Debug روی دستگاه واقعی.</p></article>
+            <article className="stack-card"><h3>محصولات Cross-Platform</h3><p>توسعه PWA و محصولات Mobile-First با Service Worker، رفتار Offline و Local-First، قابلیت نصب، Safe Area و اتصال به API، WebSocket یا سرویس‌های Companion.</p></article>
+          </div>
         </div>
       </section>
 
