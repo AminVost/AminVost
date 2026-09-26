@@ -1,10 +1,11 @@
-export type ProjectCategory = 'Web' | 'Mobile' | 'AI' | 'Desktop' | 'Infrastructure' | 'Product';
+export type ProjectCategory = 'Web' | 'Mobile' | 'AI' | 'Desktop' | 'Infrastructure' | 'Product' | 'Game';
 
 export type Project = {
   id: number;
   slug: string;
   title: string;
   url?: string | null;
+  additionalUrls?: Array<{ label: string; url: string }>;
   period: string;
   context: string;
   role: string;
@@ -199,7 +200,8 @@ export const projects: Project[] = [
     ],
     "categories": [
       "Web",
-      "Product"
+      "Product",
+      "Game"
     ],
     "featured": false,
     "featuredRank": 999
@@ -246,7 +248,7 @@ export const projects: Project[] = [
     "id": 8,
     "slug": "tahagasht-travel-platform-tahagasht-com",
     "title": "Tahagasht Travel Platform tahagasht.com/",
-    "url": "https://tahagasht.com/",
+    "url": "https://www.tahagasht.com/",
     "period": "2023 - Present",
     "context": "Full-Stack Developer",
     "role": "Full-Stack Developer",
@@ -282,6 +284,12 @@ export const projects: Project[] = [
     "slug": "pantomin-pantomim-aminvost-ir",
     "title": "Pantomin pantomim.aminvost.ir/",
     "url": "https://pantomim.aminvost.ir/",
+    "additionalUrls": [
+      {
+        "label": "Vercel demo",
+        "url": "https://pantomime-sand.vercel.app/"
+      }
+    ],
     "period": "2026 - Present",
     "context": "Personal Project",
     "role": "Full-Stack Developer / Product Creator",
@@ -313,7 +321,8 @@ export const projects: Project[] = [
       "Web",
       "Desktop",
       "Infrastructure",
-      "Product"
+      "Product",
+      "Game"
     ],
     "featured": true,
     "featuredRank": 9
@@ -602,7 +611,8 @@ export const projects: Project[] = [
     "categories": [
       "Web",
       "Infrastructure",
-      "Product"
+      "Product",
+      "Game"
     ],
     "featured": true,
     "featuredRank": 4
@@ -703,7 +713,7 @@ export const projects: Project[] = [
     "id": 22,
     "slug": "evisa-immigration-evisaimmigration-org",
     "title": "eVisa Immigration evisaimmigration.org/",
-    "url": "https://evisaimmigration.org/",
+    "url": "https://evisaimmigration.org/fa",
     "period": "2023",
     "context": "Full-Stack Developer",
     "role": "Full-Stack Developer",
@@ -1018,7 +1028,73 @@ export const projects: Project[] = [
     ],
     "featured": false,
     "featuredRank": 999
+  },
+  {
+    "id": 33,
+    "slug": "shab-persian-mafia-game",
+    "title": "Shab — Persian Mafia Game",
+    "url": "https://shab-pink.vercel.app/",
+    "period": "2026",
+    "context": "Personal Project",
+    "role": "Product Creator / Front-End Developer",
+    "contribution": "Designed and implemented the mobile-first game-master companion experience.",
+    "summary": "Persian mobile-first Mafia game companion built to guide a game host through running in-person sessions.",
+    "highlights": [
+      "Provides a focused Persian game-master experience for managing Mafia sessions around a physical table.",
+      "Designed as an installable, mobile-friendly web app with safe-area and standalone display support.",
+      "Delivered as a lightweight live deployment on Vercel."
+    ],
+    "technologies": [
+      "Web App",
+      "PWA",
+      "JavaScript",
+      "HTML",
+      "CSS",
+      "Vercel"
+    ],
+    "categories": [
+      "Web",
+      "Mobile",
+      "Product",
+      "Game"
+    ],
+    "featured": false,
+    "featuredRank": 999
+  },
+  {
+    "id": 34,
+    "slug": "legal-case-document-management-demo",
+    "title": "Legal Case & Document Management Demo",
+    "url": "https://legal-demo-navy.vercel.app/",
+    "period": "2026",
+    "context": "Client Proposal Demo",
+    "role": "Front-End Developer / Product Designer",
+    "contribution": "Designed and implemented the complete static front-end demo to validate the product structure, workflows and visual direction before backend development.",
+    "summary": "Static front-end demo of an integrated legal case, document and daily-work management system for a holding company's legal department.",
+    "highlights": [
+      "Covers case files, documents, notices, tasks, deadlines, internal messaging, search, reporting and administration workflows.",
+      "Includes interactive mock flows for case/task creation, status changes, chat and pinned cases using browser state.",
+      "Implements a responsive Persian RTL interface, light/dark themes and a legal-office visual language.",
+      "Documents readiness for future backend, database, authentication, permissions, private storage and official Adliran integration."
+    ],
+    "technologies": [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "RTL",
+      "Responsive UI",
+      "Recharts",
+      "Mock Data",
+      "Vercel"
+    ],
+    "categories": [
+      "Web",
+      "Product"
+    ],
+    "featured": false,
+    "featuredRank": 999
   }
 ] as Project[];
 
 export const featuredProjects = projects.filter((project) => project.featured).sort((a,b) => a.featuredRank - b.featuredRank);
+export const gameProjects = projects.filter((project) => project.categories.includes("Game"));

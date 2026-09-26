@@ -7,7 +7,7 @@ import type { ProjectCategory } from "@/data/projects";
 import { absoluteUrl, breadcrumbJsonLd, pageMetadata, personId, websiteId } from "@/lib/seo";
 
 const faCategories: Record<ProjectCategory, string> = {
-  Web: "وب", Mobile: "موبایل", AI: "هوش مصنوعی", Desktop: "دسکتاپ", Infrastructure: "زیرساخت", Product: "محصول",
+  Web: "وب", Mobile: "موبایل", AI: "هوش مصنوعی", Desktop: "دسکتاپ", Infrastructure: "زیرساخت", Product: "محصول", Game: "بازی",
 };
 
 export function generateStaticParams() {
@@ -51,7 +51,7 @@ export default async function PersianProjectDetailPage({ params }: { params: Pro
     },
     isPartOf: { "@id": websiteId },
     keywords: [...project.categories.map((item) => faCategories[item]), ...project.technologies].join(", "),
-    ...(project.url ? { sameAs: project.url } : {}),
+    ...(project.url ? { sameAs: [project.url, ...(project.additionalUrls?.map((item) => item.url) ?? [])] } : {}),
   };
 
   return (
@@ -96,6 +96,7 @@ export default async function PersianProjectDetailPage({ params }: { params: Pro
             {project.context && <><dt>Context</dt><dd>{project.context}</dd></>}
           </dl>
           {project.url && <a className="button primary" href={project.url} target="_blank" rel="noreferrer">مشاهده پروژه زنده ↗</a>}
+          {project.additionalUrls?.map((item) => <a className="button" href={item.url} target="_blank" rel="noreferrer" key={item.url}>{item.label} ↗</a>)}
           <Link className="button" href="/fa/resume">مشاهده رزومه کامل</Link>
           <Link className="button" href="/fa/full-stack-developer-tehran">پروفایل برنامه‌نویس فول‌استک</Link>
           {project.categories.includes("Mobile") && <Link className="button" href="/fa/react-native-developer">تجربه React Native</Link>}

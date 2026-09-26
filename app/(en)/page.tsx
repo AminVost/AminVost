@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { profile } from "@/data/profile";
-import { featuredProjects, projects } from "@/data/projects";
+import { featuredProjects, gameProjects, projects } from "@/data/projects";
 import { ProjectCard } from "@/components/project-card";
 import { JsonLd } from "@/components/json-ld";
 import { ProfilePhoto } from "@/components/profile-photo";
@@ -17,7 +17,7 @@ export const metadata: Metadata = pageMetadata({
 });
 
 export default function HomePage() {
-  const selected = featuredProjects.slice(0, 7);
+  const selected = featuredProjects.filter((project) => !project.categories.includes("Game")).slice(0, 7);
 
   return (
     <>
@@ -62,6 +62,22 @@ export default function HomePage() {
         </div>
         <div className="project-grid">
           {selected.map((project, index) => <ProjectCard key={project.slug} project={project} large={index === 0} index={index} />)}
+        </div>
+      </section>
+
+      <section className="section shell selected-work-section game-projects-section" id="games">
+        <div className="selected-work-head">
+          <div>
+            <div className="eyebrow">Games</div>
+            <h2>Games and interactive play experiences.</h2>
+          </div>
+          <div className="selected-work-side">
+            <p>Playable products and game-support tools designed for Persian group play, competition management and tabletop experiences.</p>
+            <Link className="text-link" href="/projects">Explore all projects <span aria-hidden="true">→</span></Link>
+          </div>
+        </div>
+        <div className="project-grid">
+          {gameProjects.map((project, index) => <ProjectCard key={project.slug} project={project} index={index} />)}
         </div>
       </section>
 

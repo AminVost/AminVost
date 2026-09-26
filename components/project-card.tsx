@@ -8,6 +8,7 @@ const faCategories: Record<ProjectCategory, string> = {
   Desktop: "دسکتاپ",
   Infrastructure: "زیرساخت",
   Product: "محصول",
+  Game: "بازی",
 };
 
 export function ProjectCard({

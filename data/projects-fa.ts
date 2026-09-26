@@ -273,6 +273,29 @@ const fa: Record<number, ProjectFaOverride> = {
     contribution: "به‌عنوان ابزار پشتیبان Production و SEO برای پروژه Pantomin ساخته شد.",
     summary: "ابزار سبک Monitoring برای Pantomin که Crawl داخلی را با داده رسمی Google Search Console ترکیب می‌کند.",
     highlights: ["بررسی robots.txt، sitemap، HTTP status، title/description، canonical، noindex، H1، lang/RTL فارسی، JSON-LD، Internal Link و Response Time.", "خواندن Search Analytics، Sitemap Health و URL Inspection از API رسمی Search Console، تولید Reportهای HTML/JSON و امکان Telegram Alert.", "اجرای زمان‌بندی‌شده روی Linux/systemd با منابع کم و نگهداری OAuth Credential خارج از Source عمومی."]
+  },
+  33: {
+    context: "محصول شخصی",
+    role: "سازنده محصول / توسعه‌دهنده Front-End",
+    contribution: "طراحی و پیاده‌سازی تجربه Mobile-First برای همراهی گرداننده بازی.",
+    summary: "همراه فارسی و Mobile-First بازی مافیا برای کمک به گرداننده در اجرای دورهمی‌های حضوری.",
+    highlights: [
+      "ارائه تجربه متمرکز فارسی برای مدیریت بازی مافیا دور میز.",
+      "طراحی به‌صورت Web App نصب‌پذیر و سازگار با موبایل، Safe Area و حالت Standalone.",
+      "انتشار نسخه سبک و زنده روی Vercel."
+    ]
+  },
+  34: {
+    context: "دموی پیشنهادی برای مشتری",
+    role: "توسعه‌دهنده Front-End / طراح محصول",
+    contribution: "طراحی و پیاده‌سازی کامل دموی استاتیک Front-End برای اعتبارسنجی ساختار محصول، Flowها و جهت بصری پیش از توسعه Backend.",
+    summary: "دموی استاتیک Front-End سامانه یکپارچه مدیریت پرونده، اسناد و امور روزانه واحد حقوقی یک هلدینگ.",
+    highlights: [
+      "پوشش پرونده‌ها، اسناد، ابلاغیه‌ها، وظایف، مهلت‌ها، پیام‌رسانی داخلی، جستجو، گزارش‌ها و مدیریت سامانه.",
+      "Flowهای تعاملی Mock برای ایجاد پرونده و وظیفه، تغییر وضعیت، گفتگو و Pin پرونده‌ها با State مرورگر.",
+      "رابط کاملاً Responsive و RTL فارسی با حالت روشن/تیره و زبان بصری دفتر حقوقی.",
+      "آماده‌سازی ساختار برای اتصال آینده به Backend، Database، Authentication، Permission، Storage خصوصی و API رسمی عدل ایران."
+    ]
   }
 };
 
@@ -287,3 +310,4 @@ export const projectsFa: Project[] = projects.map((project) => ({
 }));
 
 export const featuredProjectsFa = projectsFa.filter((project) => project.featured).sort((a, b) => a.featuredRank - b.featuredRank);
+export const gameProjectsFa = projectsFa.filter((project) => project.categories.includes("Game"));

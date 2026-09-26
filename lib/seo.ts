@@ -66,6 +66,14 @@ export function pageMetadata({
           height: 630,
           alt: "Amin Asadi Vosta (AminVost) — Full-Stack Software Engineer",
         },
+        {
+          url: profileImageUrl,
+          width: 691,
+          height: 1280,
+          alt: locale === "fa"
+            ? "عکس امین اسدی وسطی (AminVost)، مهندس نرم‌افزار فول‌استک"
+            : "Amin Asadi Vosta (AminVost), full-stack software engineer",
+        },
       ],
     },
     twitter: {
@@ -89,6 +97,8 @@ export function profileImageJsonLd(locale: SeoLocale = "en") {
     url: profileImageUrl,
     width: 691,
     height: 1280,
+    encodingFormat: "image/png",
+    representativeOfPage: true,
     name: isFa
       ? "عکس امین اسدی وسطی (AminVost)"
       : "Amin Asadi Vosta (AminVost) portrait",

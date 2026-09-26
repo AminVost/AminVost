@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { profileFa } from "@/data/profile-fa";
-import { featuredProjectsFa, projectsFa } from "@/data/projects-fa";
+import { featuredProjectsFa, gameProjectsFa, projectsFa } from "@/data/projects-fa";
 import { ProjectCard } from "@/components/project-card";
 import { JsonLd } from "@/components/json-ld";
 import { ProfilePhoto } from "@/components/profile-photo";
@@ -17,7 +17,7 @@ export const metadata: Metadata = pageMetadata({
 });
 
 export default function PersianHomePage() {
-  const selected = featuredProjectsFa.slice(0, 7);
+  const selected = featuredProjectsFa.filter((project) => !project.categories.includes("Game")).slice(0, 7);
 
   return (
     <>
@@ -62,6 +62,22 @@ export default function PersianHomePage() {
         </div>
         <div className="project-grid">
           {selected.map((project, index) => <ProjectCard key={project.slug} project={project} large={index === 0} locale="fa" index={index} />)}
+        </div>
+      </section>
+
+      <section className="section shell selected-work-section game-projects-section" id="games">
+        <div className="selected-work-head">
+          <div>
+            <div className="eyebrow">بازی‌ها</div>
+            <h2>بازی‌ها و تجربه‌های تعاملی</h2>
+          </div>
+          <div className="selected-work-side">
+            <p>محصولات قابل‌بازی و ابزارهای همراه برای بازی‌های گروهی فارسی، مدیریت مسابقات و بازی‌های رومیزی.</p>
+            <Link className="text-link" href="/fa/projects">مشاهده همه پروژه‌ها <span aria-hidden="true">←</span></Link>
+          </div>
+        </div>
+        <div className="project-grid">
+          {gameProjectsFa.map((project, index) => <ProjectCard key={project.slug} project={project} locale="fa" index={index} />)}
         </div>
       </section>
 

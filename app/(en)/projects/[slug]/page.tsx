@@ -45,7 +45,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
     },
     isPartOf: { "@id": websiteId },
     keywords: [...project.categories, ...project.technologies].join(", "),
-    ...(project.url ? { sameAs: project.url } : {}),
+    ...(project.url ? { sameAs: [project.url, ...(project.additionalUrls?.map((item) => item.url) ?? [])] } : {}),
   };
 
   return (
@@ -90,6 +90,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
             {project.context && <><dt>Context</dt><dd>{project.context}</dd></>}
           </dl>
           {project.url && <a className="button primary" href={project.url} target="_blank" rel="noreferrer">Visit live project ↗</a>}
+          {project.additionalUrls?.map((item) => <a className="button" href={item.url} target="_blank" rel="noreferrer" key={item.url}>{item.label} ↗</a>)}
           <Link className="button" href="/resume">See full resume</Link>
           <Link className="button" href="/full-stack-developer-iran">Full-stack developer profile</Link>
           {project.categories.includes("Mobile") && <Link className="button" href="/react-native-developer">React Native experience</Link>}

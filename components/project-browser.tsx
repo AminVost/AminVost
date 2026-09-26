@@ -4,7 +4,7 @@ import { useMemo, useState } from "react";
 import { ProjectCard } from "@/components/project-card";
 import type { Project, ProjectCategory } from "@/data/projects";
 
-const categories: Array<"All" | ProjectCategory> = ["All", "Web", "Mobile", "AI", "Desktop", "Infrastructure", "Product"];
+const categories: Array<"All" | ProjectCategory> = ["All", "Game", "Web", "Mobile", "AI", "Desktop", "Infrastructure", "Product"];
 const faLabels: Record<(typeof categories)[number], string> = {
   All: "همه",
   Web: "وب",
@@ -13,6 +13,7 @@ const faLabels: Record<(typeof categories)[number], string> = {
   Desktop: "دسکتاپ",
   Infrastructure: "زیرساخت",
   Product: "محصول",
+  Game: "بازی",
 };
 
 export function ProjectBrowser({ projects, locale = "en" }: { projects: Project[]; locale?: "en" | "fa" }) {
