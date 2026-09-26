@@ -6,6 +6,7 @@ import { ProjectCard } from "@/components/project-card";
 import { JsonLd } from "@/components/json-ld";
 import { ProfilePhoto } from "@/components/profile-photo";
 import { MobileEngineeringShowcase } from "@/components/mobile-engineering-showcase";
+import { HomeAiInvitation } from "@/components/home-ai-invitation";
 import { absoluteUrl, pageMetadata, profilePageJsonLd, websiteJsonLd } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
@@ -52,6 +53,8 @@ export default function PersianHomePage() {
           <div className="stat"><strong>AI + Local</strong><span>API، OCR و مدل‌های Local</span></div>
         </div>
       </section>
+
+      <HomeAiInvitation locale="fa" />
 
       <section className="section shell selected-work-section">
         <div className="selected-work-head">

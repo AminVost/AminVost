@@ -24,6 +24,19 @@ export function ResumeAssistantShell({ locale = "en" }: { locale?: "en" | "fa" }
     };
   }, [open]);
 
+  useEffect(() => {
+    const openFromPage = (event: Event) => {
+      const source = event instanceof CustomEvent && typeof event.detail?.source === "string"
+        ? event.detail.source
+        : "page_cta";
+      setOpen(true);
+      trackResumeAssistantEvent("agent_opened", { locale, source });
+    };
+
+    window.addEventListener("aminvost:open-assistant", openFromPage);
+    return () => window.removeEventListener("aminvost:open-assistant", openFromPage);
+  }, [locale]);
+
   const handleOpen = () => {
     setOpen(true);
     trackResumeAssistantEvent("agent_opened", { locale });
