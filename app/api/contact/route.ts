@@ -2,6 +2,7 @@ import { generateText } from "ai";
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 import { lowThinkingProviderOptions, resumeAssistantModel } from "@/lib/ai/model";
+import { hasGeminiApiKeys } from "@/lib/ai/gemini-key-pool";
 import { sendEmailLead } from "@/lib/notifications/email";
 import { sendTelegramLead } from "@/lib/notifications/telegram";
 import { enforceAssistantRateLimit } from "@/lib/security/rate-limit";
@@ -16,6 +17,7 @@ const contactSchema = z.object({
   email: z.string().trim().email().max(200),
   company: z.string().trim().max(120).optional().default(""),
   contactMethod: z.enum(["email", "telegram", "phone"]).optional(),
+  contactValue: z.string().trim().max(120).optional().default(""),
   message: z.string().trim().min(10).max(2000),
   locale: z.enum(["en", "fa"]).default("en"),
   conversation: z
@@ -27,6 +29,14 @@ const contactSchema = z.object({
     )
     .max(10)
     .default([]),
+}).superRefine((data, context) => {
+  if (data.contactMethod !== "email" && data.contactValue.length < 3) {
+    context.addIssue({
+      code: "custom",
+      path: ["contactValue"],
+      message: "Preferred contact detail is required.",
+    });
+  }
 });
 
 function clean(value: string) {
@@ -38,7 +48,7 @@ function clean(value: string) {
 
 async function summarizeLead(data: z.infer<typeof contactSchema>) {
   const fallback = `${data.company ? `${data.company}: ` : ""}${data.message}`.slice(0, 320);
-  if (!process.env.GOOGLE_GENERATIVE_AI_API_KEY) return fallback;
+  if (!hasGeminiApiKeys()) return fallback;
 
   const transcript = data.conversation
     .slice(-8)
@@ -99,6 +109,7 @@ export async function POST(request: NextRequest) {
     name: clean(parsed.data.name),
     email: clean(parsed.data.email),
     company: clean(parsed.data.company),
+    contactValue: clean(parsed.data.contactValue),
     message: clean(parsed.data.message),
   };
   const summary = await summarizeLead(data);
@@ -113,18 +124,22 @@ export async function POST(request: NextRequest) {
     sendEmailLead(lead),
   ]);
 
-  const sent = results.some(
-    (result) =>
-      result.status === "fulfilled" &&
-      "sent" in result.value &&
-      result.value.sent === true,
+  const deliveredChannels = results.flatMap((result, index) =>
+    result.status === "fulfilled" && result.value.sent
+      ? [index === 0 ? "telegram" : "email"]
+      : [],
   );
+  const sent = deliveredChannels.length > 0;
 
-  results.forEach((result) => {
-    if (result.status === "rejected") console.error("Lead notification failed", result.reason);
+  results.forEach((result, index) => {
+    const channel = index === 0 ? "telegram" : "email";
+    if (result.status === "rejected") {
+      console.error(`Lead notification failed (${channel})`, result.reason);
+    }
   });
 
   if (!sent) {
+    console.error("Lead notification has no configured/available delivery channel");
     return NextResponse.json(
       {
         error:
@@ -136,5 +151,5 @@ export async function POST(request: NextRequest) {
     );
   }
 
-  return NextResponse.json({ ok: true });
+  return NextResponse.json({ ok: true, delivered: deliveredChannels });
 }

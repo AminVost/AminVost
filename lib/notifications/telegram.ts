@@ -3,9 +3,11 @@ type LeadNotification = {
   email: string;
   company?: string;
   contactMethod?: string;
+  contactValue?: string;
   message: string;
   summary: string;
   conversationId: string;
+  locale: "en" | "fa";
 };
 
 function escapeHtml(value: string) {
@@ -16,8 +18,8 @@ function escapeHtml(value: string) {
 }
 
 export async function sendTelegramLead(lead: LeadNotification) {
-  const token = process.env.TELEGRAM_BOT_TOKEN;
-  const chatId = process.env.TELEGRAM_CHAT_ID;
+  const token = process.env.TELEGRAM_BOT_TOKEN?.trim();
+  const chatId = process.env.TELEGRAM_CHAT_ID?.trim();
   if (!token || !chatId) return { sent: false, reason: "not-configured" } as const;
 
   const lines = [
@@ -29,6 +31,10 @@ export async function sendTelegramLead(lead: LeadNotification) {
     lead.contactMethod
       ? `<b>Preferred contact:</b> ${escapeHtml(lead.contactMethod)}`
       : "",
+    lead.contactValue
+      ? `<b>Contact detail:</b> ${escapeHtml(lead.contactValue)}`
+      : "",
+    `<b>Language:</b> ${lead.locale === "fa" ? "Persian" : "English"}`,
     "",
     "<b>Message:</b>",
     escapeHtml(lead.message),
@@ -37,6 +43,7 @@ export async function sendTelegramLead(lead: LeadNotification) {
     escapeHtml(lead.summary),
     "",
     `<b>Conversation ID:</b> <code>${escapeHtml(lead.conversationId)}</code>`,
+    `<b>Received:</b> ${escapeHtml(new Date().toISOString())}`,
   ].filter(Boolean);
 
   const response = await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
@@ -54,7 +61,7 @@ export async function sendTelegramLead(lead: LeadNotification) {
 
   if (!response.ok) {
     const body = await response.text().catch(() => "");
-    throw new Error(`Telegram notification failed: ${response.status} ${body.slice(0, 160)}`);
+    throw new Error(`Telegram notification failed: ${response.status} ${body.slice(0, 500)}`);
   }
 
   return { sent: true } as const;

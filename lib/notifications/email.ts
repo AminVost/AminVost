@@ -3,6 +3,7 @@ type LeadEmail = {
   email: string;
   company?: string;
   contactMethod?: string;
+  contactValue?: string;
   message: string;
   summary: string;
   conversationId: string;
@@ -28,6 +29,7 @@ export async function sendEmailLead(lead: LeadEmail) {
     <p><strong>Email:</strong> ${escapeHtml(lead.email)}</p>
     ${lead.company ? `<p><strong>Company:</strong> ${escapeHtml(lead.company)}</p>` : ""}
     ${lead.contactMethod ? `<p><strong>Preferred contact:</strong> ${escapeHtml(lead.contactMethod)}</p>` : ""}
+    ${lead.contactValue ? `<p><strong>Contact detail:</strong> ${escapeHtml(lead.contactValue)}</p>` : ""}
     <p><strong>Message:</strong><br>${escapeHtml(lead.message).replaceAll("\n", "<br>")}</p>
     <p><strong>AI summary:</strong><br>${escapeHtml(lead.summary)}</p>
     <p><strong>Conversation ID:</strong> ${escapeHtml(lead.conversationId)}</p>

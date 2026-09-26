@@ -31,6 +31,8 @@ export function ContactForm({
   const isFa = locale === "fa";
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
   const [error, setError] = useState("");
+  const [delivered, setDelivered] = useState<string[]>([]);
+  const [contactMethod, setContactMethod] = useState<"email" | "telegram" | "phone">("email");
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -42,7 +44,8 @@ export function ContactForm({
       name: String(form.get("name") || ""),
       email: String(form.get("email") || ""),
       company: String(form.get("company") || ""),
-      contactMethod: String(form.get("contactMethod") || "") || undefined,
+      contactMethod,
+      contactValue: String(form.get("contactValue") || ""),
       message: String(form.get("message") || ""),
       locale,
       conversation: conversationText(messages),
@@ -55,8 +58,18 @@ export function ContactForm({
         credentials: "same-origin",
         body: JSON.stringify(payload),
       });
-      const data = (await response.json().catch(() => ({}))) as { error?: string };
-      if (!response.ok) throw new Error(data.error || "Could not send message");
+      const data = (await response.json().catch(() => ({}))) as { error?: string; delivered?: string[] };
+      if (!response.ok) {
+        const localizedError = response.status === 401
+          ? isFa ? "نشست امن منقضی شده است؛ دستیار را ببندید و دوباره باز کنید." : "The secure session expired. Close and reopen the assistant."
+          : response.status === 429
+            ? isFa ? "تعداد تلاش‌ها بیش از حد مجاز است؛ کمی بعد دوباره امتحان کنید." : "Too many attempts. Please try again later."
+            : response.status === 400
+              ? isFa ? "لطفاً اطلاعات فرم را بررسی کنید." : "Please check the form fields."
+              : data.error || (isFa ? "ارسال پیام انجام نشد." : "Could not send message.");
+        throw new Error(localizedError);
+      }
+      setDelivered(data.delivered ?? []);
       setStatus("success");
       trackResumeAssistantEvent("contact_request_submitted", { locale });
     } catch (submitError) {
@@ -79,8 +92,12 @@ export function ContactForm({
           <strong>{isFa ? "پیام ارسال شد" : "Message sent"}</strong>
           <p>
             {isFa
-              ? "درخواست شما برای امین ارسال شد. در صورت نیاز از طریق اطلاعاتی که وارد کردید با شما تماس گرفته می‌شود."
-              : "Your request was sent to Amin. He can follow up using the contact details you provided."}
+              ? delivered.includes("telegram")
+                ? "درخواست شما مستقیماً در تلگرام برای امین ارسال شد."
+                : "درخواست شما برای امین ارسال شد. در صورت نیاز از طریق اطلاعاتی که وارد کردید با شما تماس گرفته می‌شود."
+              : delivered.includes("telegram")
+                ? "Your request was delivered directly to Amin on Telegram."
+                : "Your request was sent to Amin. He can follow up using the contact details you provided."}
           </p>
         </div>
       </div>
@@ -108,12 +125,34 @@ export function ContactForm({
         </label>
         <label>
           <span>{isFa ? "روش تماس ترجیحی" : "Preferred contact"}</span>
-          <select name="contactMethod" defaultValue="email">
+          <select
+            name="contactMethod"
+            value={contactMethod}
+            onChange={(event) => setContactMethod(event.target.value as typeof contactMethod)}
+          >
             <option value="email">Email</option>
             <option value="telegram">Telegram</option>
             <option value="phone">{isFa ? "تلفن" : "Phone"}</option>
           </select>
         </label>
+        {contactMethod !== "email" && (
+          <label className="resume-contact-detail">
+            <span>
+              {contactMethod === "telegram"
+                ? isFa ? "نام کاربری تلگرام" : "Telegram username"
+                : isFa ? "شماره تماس" : "Phone number"}
+            </span>
+            <input
+              name="contactValue"
+              required
+              minLength={3}
+              maxLength={120}
+              autoComplete={contactMethod === "phone" ? "tel" : "off"}
+              inputMode={contactMethod === "phone" ? "tel" : "text"}
+              placeholder={contactMethod === "telegram" ? "@username" : "+98…"}
+            />
+          </label>
+        )}
       </div>
       <label className="resume-contact-message">
         <span>{isFa ? "خلاصه پروژه یا پیام" : "Short project / message"}</span>
