@@ -10,7 +10,7 @@ export const profileFa = {
   phone: "+98 937 908 4356",
   github: "https://github.com/AminVost",
   telegram: "https://t.me/aminvost",
-  domain: "https://www.aminvost.ir",
+  domain: "https://aminvost.ir",
   availability: "برای پروژه‌های فریلنس، همکاری ریموت، فرصت‌های بین‌المللی، همکاری حضوری و جابه‌جایی شغلی آماده‌ام",
   summary: "مهندس نرم‌افزار فول‌استک با حدود شش سال تجربه حرفه‌ای توسعه نرم‌افزار و نزدیک به هفت سال سابقه همکاری با WebNevisan. تجربه من از وب‌اپ‌های مدرن و اپلیکیشن‌های React Native تا PWA، سیستم‌های Production مبتنی بر PHP، API، استقرار روی Linux و اضافه‌کردن قابلیت‌های کاربردی AI به محصولات مختلف را پوشش می‌دهد. معمولاً دوست دارم از ابتدای مسئله وارد شوم؛ نیاز واقعی را بفهمم، Flow یا رابط ساده‌تری پیشنهاد بدهم و بعد راه‌حل را تا مرحله اجرا و Production پیش ببرم.",
   principles: [

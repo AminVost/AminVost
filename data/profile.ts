@@ -10,7 +10,7 @@ export const profile = {
   phone: "+98 937 908 4356",
   github: "https://github.com/AminVost",
   telegram: "https://t.me/aminvost",
-  domain: "https://www.aminvost.ir",
+  domain: "https://aminvost.ir",
   availability: "Available for freelance projects, remote opportunities, international work, on-site roles and relocation",
   summary: "Full-stack software engineer with roughly six years of professional development experience and about seven years at WebNevisan. I work across modern web apps, React Native mobile products, PWAs, production PHP systems, APIs, Linux deployment and practical AI integrations. I like getting involved early: understanding the real problem, shaping a simpler flow or interface, and then building the solution.",
   principles: [
