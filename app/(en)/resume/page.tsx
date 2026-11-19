@@ -38,10 +38,15 @@ export default function ResumePage() {
         <div className="eyebrow">Resume · AminVost</div>
         <h1>Full-stack software engineering experience.</h1>
         <p>{profile.summary}</p>
-        <div className="resume-downloads">
-          <a className="button primary" href="/cv/Amin-Asadi-Vosta-FullStack.docx" download>Full-Stack CV ↓</a>
-          <a className="button" href="/cv/Amin-Asadi-Vosta-FullStack-AI.docx" download>AI-focused CV ↓</a>
-          <a className="button" href="/cv/Amin-Asadi-Vosta-FA.docx" download>Persian CV ↓</a>
+        <div className="resume-downloads" aria-label="Primary PDF resumes">
+          <a className="button primary" href="/cv/Amin_Asadi_Vosta_Resume_EN_Final_2026.pdf" download>Download main resume (English PDF) ↓</a>
+          <a className="button" href="/cv/Amin_Asadi_Vosta_Resume_FA_Final_2026.pdf" download>Persian PDF ↓</a>
+        </div>
+        <p>Previous resume versions (DOCX)</p>
+        <div className="resume-downloads" aria-label="Previous DOCX versions">
+          <a className="button" href="/cv/Amin-Asadi-Vosta-FullStack.docx" download>Full-Stack DOCX ↓</a>
+          <a className="button" href="/cv/Amin-Asadi-Vosta-FullStack-AI.docx" download>AI-focused DOCX ↓</a>
+          <a className="button" href="/cv/Amin-Asadi-Vosta-FA.docx" download>Persian DOCX ↓</a>
         </div>
       </header>
 
