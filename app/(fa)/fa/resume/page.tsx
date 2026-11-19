@@ -38,8 +38,13 @@ export default function PersianResumePage() {
         <div className="eyebrow">رزومه · AminVost</div>
         <h1>تجربه حرفه‌ای مهندسی نرم‌افزار فول‌استک</h1>
         <p>{profileFa.summary}</p>
-        <div className="resume-downloads">
-          <a className="button primary" href="/cv/Amin-Asadi-Vosta-FA.docx" download>دانلود رزومه فارسی ↓</a>
+        <div className="resume-downloads" aria-label="رزومه‌های اصلی PDF">
+          <a className="button primary" href="/cv/Amin_Asadi_Vosta_Resume_FA_Final_2026.pdf" download>دانلود رزومه اصلی فارسی (PDF) ↓</a>
+          <a className="button" href="/cv/Amin_Asadi_Vosta_Resume_EN_Final_2026.pdf" download>رزومه اصلی انگلیسی (PDF) ↓</a>
+        </div>
+        <p>نسخه‌های قبلی رزومه (DOCX)</p>
+        <div className="resume-downloads" aria-label="نسخه‌های قبلی DOCX">
+          <a className="button" href="/cv/Amin-Asadi-Vosta-FA.docx" download>رزومه فارسی DOCX ↓</a>
           <a className="button" href="/cv/Amin-Asadi-Vosta-FullStack.docx" download>رزومه انگلیسی Full-Stack ↓</a>
           <a className="button" href="/cv/Amin-Asadi-Vosta-FullStack-AI.docx" download>رزومه انگلیسی AI ↓</a>
         </div>
