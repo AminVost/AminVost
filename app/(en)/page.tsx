@@ -12,7 +12,7 @@ import { absoluteUrl, pageMetadata, profilePageJsonLd, websiteJsonLd } from "@/l
 export const metadata: Metadata = pageMetadata({
   locale: "en",
   description:
-    "Amin Asadi Vosta (AminVost) is a full-stack software engineer in Tehran, Iran working across Next.js, React, React Native, PHP, APIs, production systems and practical AI integrations. Available for freelance and remote international work.",
+    "Amin Asadi Vosta (AminVost), full-stack software engineer in Tehran. Portfolio and resume featuring Next.js, React, PHP, mobile apps and applied AI.",
   canonicalPath: "/",
   enPath: "/",
   faPath: "/fa",
@@ -117,7 +117,7 @@ export default function HomePage() {
             <h2>Software engineering with product context.</h2>
           </div>
           <div className="stack">
-            <article className="stack-card"><h3>Amin Asadi Vosta</h3><p>AminVost is the professional identity I use for my software work. My Persian name is <span lang="fa" dir="rtl">امین اسدی وسطی</span> (also known as <span lang="fa" dir="rtl">امین اسدی</span>). I work across front-end, backend, mobile, integrations and deployment, with an emphasis on maintainable systems that solve a real product problem.</p></article>
+            <article className="stack-card"><h3>Amin Asadi Vosta</h3><p>AminVost is the professional identity I use for my software work. My Persian name is <Link href="/fa" lang="fa" dir="rtl" hrefLang="fa">امین اسدی وسطی</Link> (also known as <span lang="fa" dir="rtl">امین اسدی</span>). I work across front-end, backend, mobile, integrations and deployment, with an emphasis on maintainable systems that solve a real product problem.</p></article>
             {profile.principles.map((item) => <article className="stack-card" key={item.title}><h3>{item.title}</h3><p>{item.text}</p></article>)}
             <article className="stack-card"><h3>Rust, without pretending it is my main stack</h3><p>{profile.rustNote}</p></article>
           </div>

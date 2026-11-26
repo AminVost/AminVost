@@ -6,9 +6,9 @@ import { absoluteUrl, breadcrumbJsonLd, pageMetadata, personId } from "@/lib/seo
 
 export const metadata: Metadata = pageMetadata({
   locale: "fa",
-  title: "رزومه امین اسدی وسطی — برنامه نویس و مهندس نرم‌افزار",
+  title: "رزومه امین اسدی وسطی — برنامه نویس",
   description:
-    "رزومه امین اسدی وسطی (AminVost)، مهندس نرم‌افزار و برنامه‌نویس فول‌استک در تهران با بیش از ۶ سال تجربه حرفه‌ای در وب، موبایل و PWA، PHP، Next.js، API، Linux و هوش مصنوعی کاربردی.",
+    "رزومه امین اسدی وسطی (AminVost)، برنامه‌نویس وب و مهندس نرم‌افزار؛ سوابق حرفه‌ای، مهارت‌ها، تحصیلات و دانلود رزومه فارسی و انگلیسی.",
   canonicalPath: "/fa/resume",
   enPath: "/resume",
   faPath: "/fa/resume",
@@ -38,6 +38,7 @@ export default function PersianResumePage() {
         <div className="eyebrow">رزومه · AminVost</div>
         <h1>رزومه امین اسدی وسطی — مهندس نرم‌افزار فول‌استک</h1>
         <p>{profileFa.summary}</p>
+        <p>برای آشنایی بیشتر با امین اسدی وسطی، <Link href="/fa">وب‌سایت شخصی</Link> و <Link href="/fa/projects">نمونه‌کارهای برنامه‌نویسی</Link> را ببینید.</p>
         <div className="resume-downloads">
           <a className="button primary" href="/cv/Amin-Asadi-Vosta-FA.docx" download>دانلود رزومه فارسی ↓</a>
           <a className="button" href="/cv/Amin-Asadi-Vosta-FullStack.docx" download>رزومه انگلیسی Full-Stack ↓</a>
