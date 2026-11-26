@@ -1,5 +1,11 @@
 # Amin Vosta — Personal Portfolio
 
+**Amin Asadi Vosta (AminVost) — امین اسدی وسطی (امین اسدی)**
+
+Full-stack software engineer and web developer based in Tehran, Iran.
+
+امین اسدی وسطی، برنامه‌نویس و توسعه‌دهنده وب در تهران؛ رزومه و نمونه‌کارهای رسمی: [وب‌سایت فارسی امین اسدی](https://aminvost.ir/fa) · [رزومه فارسی](https://aminvost.ir/fa/resume) · [English portfolio](https://aminvost.ir/).
+
 A data-driven personal engineering portfolio built with Next.js App Router and TypeScript.
 
 ## What is included
