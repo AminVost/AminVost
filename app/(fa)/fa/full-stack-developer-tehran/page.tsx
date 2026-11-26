@@ -11,7 +11,7 @@ const description = "امین اسدی وسطی (AminVost)، برنامه‌نو
 
 export const metadata: Metadata = pageMetadata({
   locale: "fa",
-  title: "برنامه‌نویس فول‌استک در تهران",
+  title: "امین اسدی وسطی — برنامه‌نویس فول‌استک در تهران",
   description,
   canonicalPath: "/fa/full-stack-developer-tehran",
   enPath: "/full-stack-developer-iran",
