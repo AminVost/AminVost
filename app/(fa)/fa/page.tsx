@@ -12,7 +12,7 @@ import { absoluteUrl, pageMetadata, profilePageJsonLd, websiteJsonLd } from "@/l
 export const metadata: Metadata = pageMetadata({
   locale: "fa",
   description:
-    "رزومه و نمونه‌کارهای امین اسدی وسطی (AminVost)، مهندس نرم‌افزار و برنامه‌نویس فول‌استک در تهران با تجربه Next.js، React، React Native، PHP، API، موبایل، PWA و هوش مصنوعی کاربردی.",
+    "وب‌سایت رسمی امین اسدی (امین اسدی وسطی)، برنامه نویس و توسعه‌دهنده وب در تهران با نام حرفه‌ای AminVost. رزومه، نمونه‌کارها و تجربه توسعه نرم‌افزار، React، Next.js، PHP، موبایل و هوش مصنوعی.",
   canonicalPath: "/fa",
   enPath: "/",
   faPath: "/fa",
@@ -34,7 +34,7 @@ export default function PersianHomePage() {
             <div className="eyebrow"><span className="dot" /> AminVost · مهندس نرم‌افزار فول‌استک</div>
             <h1>امین اسدی وسطی — <span>برنامه‌نویس و مهندس نرم‌افزار فول‌استک برای وب، موبایل و هوش مصنوعی کاربردی.</span></h1>
             <div className="hero-intro">
-              <p>من امین اسدی وسطی (AminVost) هستم؛ برنامه‌نویس و مهندس نرم‌افزار فول‌استک در تهران. تمرکز اصلی من روی توسعه وب‌اپلیکیشن‌های واقعی، اپلیکیشن‌های React Native، سیستم‌های API محور، PWA و پیاده‌سازی قابلیت‌های کاربردی هوش مصنوعی در محصولات واقعی است.</p>
+              <p>من امین اسدی وسطی هستم؛ با نام امین اسدی و نام حرفه‌ای AminVost شناخته می‌شوم. برنامه نویس و مهندس نرم‌افزار فول‌استک در تهران هستم. تمرکز اصلی من روی توسعه وب‌اپلیکیشن‌های واقعی، اپلیکیشن‌های React Native، سیستم‌های API محور، PWA و پیاده‌سازی قابلیت‌های کاربردی هوش مصنوعی در محصولات واقعی است.</p>
               <div className="hero-actions hero-actions-start">
                 <Link className="button primary" href="/fa/projects">مشاهده پروژه‌ها <span aria-hidden="true">↗</span></Link>
                 <Link className="button" href="/fa/resume">مشاهده رزومه</Link>
