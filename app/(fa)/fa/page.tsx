@@ -12,7 +12,7 @@ import { absoluteUrl, pageMetadata, profilePageJsonLd, websiteJsonLd } from "@/l
 export const metadata: Metadata = pageMetadata({
   locale: "fa",
   description:
-    "وب‌سایت رسمی امین اسدی (امین اسدی وسطی)، برنامه نویس و توسعه‌دهنده وب در تهران با نام حرفه‌ای AminVost. رزومه، نمونه‌کارها و تجربه توسعه نرم‌افزار، React، Next.js، PHP، موبایل و هوش مصنوعی.",
+    "وب‌سایت رسمی امین اسدی وسطی (AminVost)، برنامه نویس و توسعه‌دهنده وب در تهران؛ رزومه، نمونه‌کارها و تجربه حرفه‌ای در React، Next.js، PHP و هوش مصنوعی.",
   canonicalPath: "/fa",
   enPath: "/",
   faPath: "/fa",
