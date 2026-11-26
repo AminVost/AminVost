@@ -18,6 +18,7 @@ export function Footer({ locale = "en" }: { locale?: "en" | "fa" }) {
         </Link>
         <Link href={`${prefix}/projects`}>{isFa ? "نمونه پروژه‌ها" : "Project archive"}</Link>
         <Link href={`${prefix}/resume`}>{isFa ? "رزومه امین اسدی وسطی" : "Amin Asadi Vosta resume"}</Link>
+        {!isFa && <Link href="/fa" lang="fa" dir="rtl" hrefLang="fa">امین اسدی وسطی — وب‌سایت فارسی</Link>}
       </div>
       <div className="shell footer-row">
         <span>© {new Date().getFullYear()} AminVost · {isFa ? "امین اسدی وسطی" : "Amin Asadi Vosta"}</span>
