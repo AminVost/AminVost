@@ -10,6 +10,8 @@ import { profileFa } from "@/data/profile-fa";
 import { siteName } from "@/lib/seo";
 import { anta, manrope } from "../../fonts";
 
+const googleSiteVerification = process.env.GOOGLE_SITE_VERIFICATION;
+
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
@@ -23,14 +25,14 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(profileFa.domain),
   title: {
-    default: "امین اسدی وسطی (AminVost) | برنامه‌نویس و مهندس نرم‌افزار فول‌استک",
+    default: "امین اسدی وسطی | برنامه نویس و توسعه‌دهنده وب (AminVost)",
     template: `%s | ${siteName}`,
   },
   description: profileFa.headline,
   applicationName: siteName,
   appleWebApp: { capable: true, statusBarStyle: "black-translucent", title: siteName },
-  authors: [{ name: "Amin Asadi Vosta", url: profileFa.domain }],
-  creator: "Amin Asadi Vosta",
+  authors: [{ name: profileFa.name, url: profileFa.domain }],
+  creator: profileFa.name,
   publisher: siteName,
   category: "technology",
   referrer: "origin-when-cross-origin",
@@ -53,6 +55,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
   },
+  ...(googleSiteVerification ? { verification: { google: googleSiteVerification } } : {}),
 };
 
 export default function PersianLayout({ children }: Readonly<{ children: ReactNode }>) {

@@ -41,7 +41,7 @@ export function pageMetadata({
   const fullTitle = title
     ? `${title} | ${siteName}`
     : locale === "fa"
-      ? "امین اسدی وسطی (AminVost) | برنامه‌نویس و مهندس نرم‌افزار فول‌استک"
+      ? "امین اسدی وسطی | برنامه نویس و توسعه‌دهنده وب (AminVost)"
       : "Amin Asadi Vosta (AminVost) | Full-Stack Software Engineer";
 
   return {
@@ -114,7 +114,9 @@ export function personJsonLd(locale: SeoLocale = "en") {
   return {
     "@type": "Person",
     "@id": personId,
-    name: "Amin Asadi Vosta",
+    name: isFa ? "امین اسدی وسطی" : "Amin Asadi Vosta",
+    givenName: isFa ? "امین" : "Amin",
+    familyName: isFa ? "اسدی وسطی" : "Asadi Vosta",
     alternateName: [
       "AminVost",
       "Amin Vost",
@@ -128,7 +130,7 @@ export function personJsonLd(locale: SeoLocale = "en") {
     image: profileImageJsonLd(locale),
     email: `mailto:${profile.email}`,
     telephone: profile.phone,
-    jobTitle: isFa ? "مهندس نرم‌افزار فول‌استک" : "Full-Stack Software Engineer",
+    jobTitle: isFa ? "برنامه‌نویس و مهندس نرم‌افزار فول‌استک" : "Full-Stack Software Engineer",
     description: isFa
       ? "امین اسدی وسطی (AminVost)، برنامه‌نویس و مهندس نرم‌افزار فول‌استک در تهران با تمرکز بر توسعه وب، React Native، موبایل، API و هوش مصنوعی کاربردی."
       : "Amin Asadi Vosta (AminVost) is a full-stack software engineer in Tehran focused on production web, React Native, mobile, API integration and practical AI features.",
