@@ -144,7 +144,7 @@ export const projects: Project[] = [
       "Web"
     ],
     "featured": true,
-    "featuredRank": 6
+    "featuredRank": 7
   },
   {
     "id": 5,
@@ -325,7 +325,7 @@ export const projects: Project[] = [
       "Game"
     ],
     "featured": true,
-    "featuredRank": 9
+    "featuredRank": 10
   },
   {
     "id": 10,
@@ -536,7 +536,7 @@ export const projects: Project[] = [
       "Web"
     ],
     "featured": true,
-    "featuredRank": 5
+    "featuredRank": 6
   },
   {
     "id": 17,
@@ -568,7 +568,7 @@ export const projects: Project[] = [
       "Product"
     ],
     "featured": true,
-    "featuredRank": 7
+    "featuredRank": 8
   },
   {
     "id": 18,
@@ -616,7 +616,7 @@ export const projects: Project[] = [
       "Game"
     ],
     "featured": true,
-    "featuredRank": 4
+    "featuredRank": 5
   },
   {
     "id": 19,
@@ -738,7 +738,7 @@ export const projects: Project[] = [
       "Web"
     ],
     "featured": true,
-    "featuredRank": 8
+    "featuredRank": 9
   },
   {
     "id": 23,
@@ -924,7 +924,7 @@ export const projects: Project[] = [
       "Product"
     ],
     "featured": true,
-    "featuredRank": 3
+    "featuredRank": 4
   },
   {
     "id": 29,
@@ -1101,6 +1101,42 @@ export const projects: Project[] = [
     ],
     "featured": false,
     "featuredRank": 999
+  },
+  {
+    "id": 35,
+    "slug": "nava-ai",
+    "title": "NAVA AI — Multi-model AI Workspace",
+    "url": "https://nava-groq-chatbot.vercel.app/",
+    "period": "2026 - Present",
+    "context": "Personal Project",
+    "role": "Full-Stack Developer / Product Creator",
+    "contribution": "End-to-end product design, architecture, AI API integration, account and quota management, and deployment.",
+    "summary": "Bilingual AI workspace with streaming multi-model chat, image understanding, speech transcription and speech generation, built around GroqCloud.",
+    "highlights": [
+      "Responsive Persian RTL and English LTR interface with Vazirmatn, light/dark themes, searchable model selection and mobile-friendly navigation.",
+      "Incremental streaming chat with Markdown, conversation history, smooth scrolling, and cancellation.",
+      "Integrated Groq model discovery, vision/OCR, Whisper transcription, Orpheus speech synthesis and content safety tools.",
+      "Google and verified email authentication, PostgreSQL-backed daily request quotas, and an administrator dashboard for user management.",
+      "Server-side API integration and deployment on Vercel."
+    ],
+    "technologies": [
+      "JavaScript",
+      "Vite",
+      "Groq API",
+      "PostgreSQL",
+      "Neon Auth",
+      "Tom Select",
+      "REST API",
+      "SSE Streaming",
+      "Vercel"
+    ],
+    "categories": [
+      "AI",
+      "Web",
+      "Product"
+    ],
+    "featured": true,
+    "featuredRank": 3
   }
 ] as Project[];
 
