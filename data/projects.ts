@@ -1105,17 +1105,17 @@ export const projects: Project[] = [
   {
     "id": 35,
     "slug": "nava-ai",
-    "title": "NAVA AI — Multi-model AI Workspace",
+    "title": "VOST AI — Multi-model AI Workspace",
     "url": "https://nava-groq-chatbot.vercel.app/",
     "period": "2026 - Present",
     "context": "Personal Project",
     "role": "Full-Stack Developer / Product Creator",
     "contribution": "End-to-end product design, architecture, AI API integration, account and quota management, and deployment.",
-    "summary": "Bilingual AI workspace with streaming multi-model chat, image understanding, speech transcription and speech generation, built around GroqCloud.",
+    "summary": "Bilingual AI workspace with streaming multi-model chat, image understanding, speech transcription and speech generation, powered by Groq and Z.ai.",
     "highlights": [
       "Responsive Persian RTL and English LTR interface with Vazirmatn, light/dark themes, searchable model selection and mobile-friendly navigation.",
       "Incremental streaming chat with Markdown, conversation history, smooth scrolling, and cancellation.",
-      "Integrated Groq model discovery, vision/OCR, Whisper transcription, Orpheus speech synthesis and content safety tools.",
+      "Integrated Groq and Z.ai model routing, free-model overload recovery, vision/OCR, Whisper transcription, Orpheus speech synthesis and content safety tools.",
       "Google and verified email authentication, PostgreSQL-backed daily request quotas, and an administrator dashboard for user management.",
       "Server-side API integration and deployment on Vercel."
     ],
@@ -1123,6 +1123,7 @@ export const projects: Project[] = [
       "JavaScript",
       "Vite",
       "Groq API",
+      "Z.ai API",
       "PostgreSQL",
       "Neon Auth",
       "Tom Select",
